@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}DCI!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/bootstrap.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/mon_style.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/bootstrap-treeview.css')) }}" />
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/dci_logo.PNG') }}" />
+</head>
+<body> 
+    <div class="container">
+        <!-- Static navbar -->
+        <nav id="navbarMenu" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">DCI</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="./">Accueil</a></li>
+                        <li><a href="{{ path('dci_classification_produits') }}">Produit</a></li>
+                        <li><a href="{{ path('dci_classification_services') }}">Service</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="./"> Recherche</a></li>
+                        <li><a href="../navbar-static-top/">Connexion</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+        <img src="{{ absolute_url(asset('img/dci.PNG')) }}" width="100%" id="imgBarriere"> <br><br>
+        
+        {% block body %}{% endblock %}
+    </div>
+    {% block javascripts %}{% endblock %}
+   
+    <footer  class="navbar navbar-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Informations</h4>
+                    <ul class="nav nav-stacked">                       
+
+
+                    </ul>
+                </div> 
+
+
+                <div class="col-md-4">
+                    <h4>Adresse</h4>
+                    <p><i class=""></i>&nbsp;Dakar 75 000 - 3 rue Cpi</p>
+                </div>
+                <button class="">Teste</button>
+                <div class="col-md-4">
+                    <h4>Nous contactez</h4>
+                    <p><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Tel: XXXXX </p>
+                    <p><i class=""></i>&nbsp;Fax: XXXXX</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/jquery-3.1.1.min.js'))}}"></script>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/monScrite.js'))}}"></script>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/bootstrap-treeview.js'))}}"></script>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/treeview.js'))}}"></script>
+    </body>
+    </html>

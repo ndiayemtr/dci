@@ -1,0 +1,27 @@
+#navbarMenu{
+   margin-top: 5px;
+   margin-left: 8%;
+   margin-right: 8%;   
+}
+
+footer{
+    position: absolute;
+    margin-top:600px;
+}
+
+#imgBarriere{
+    padding-top: 5.3%;
+}
+
+#cacheNomProduit{
+    display: none;
+}
+
+.active1, .btn:hover {
+  background-color: #666;
+  color: white;
+}
+
+/*body{
+    background: #4cae4c;
+}*/

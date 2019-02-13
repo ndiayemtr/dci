@@ -1,0 +1,27 @@
+dci_add_produit:
+    path:     /add-produit
+    defaults: { _controller: DciBundle:Dci:addProduit }
+    
+dci_marchandise:
+    path:     /dci-marchandise/{id}
+    defaults: { _controller: DciBundle:Dci:addMarchandise}
+    
+dci_prix:
+    path:     /dci-prix/{id}
+    defaults: { _controller: DciBundle:Dci:addPrix}
+    
+dci_list_produits:
+    path:     /
+    defaults: { _controller: DciBundle:Dci:tousProduits}
+    
+dci_marchandises_produits:
+    path:     /dci-marchandises-produits/{id}
+    defaults: { _controller: DciBundle:Dci:marchandisesDunProduits}
+    
+dci_classification_produits:
+    path:     /dci-classification-produits
+    defaults: { _controller: DciBundle:Dci:classificationProduits}
+    
+dci_classification_services:
+    path:     /dci-classification-services
+    defaults: { _controller: DciBundle:Dci:classificationServices}

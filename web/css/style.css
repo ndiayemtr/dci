@@ -1,0 +1,158 @@
+body{
+    font-family: lucida sans;
+}
+
+.sections{
+    padding: 20px 0;
+}
+
+.overlay{
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+    
+}
+/*header*/
+header{
+    height: auto;
+    padding: 10px 0;  
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+}
+
+header i.iconMenu{
+    position: absolute;
+    right: 20px;
+    top: 37px;
+    z-index: 10;
+    display: none;
+    
+}
+
+header .logo h2{
+    font-size: 35px;
+    color: #fff;
+}
+
+header nav .nav-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0;
+}
+
+header nav .nav-list .list a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    color: #fff;
+    
+}
+
+.sticky{
+    background: #000;
+    color: #fff;
+}
+header nav .nav-list .list a:hover{
+    color: #7cb62f
+    
+}
+
+@media (max-width:575px){
+    header nav .nav-list{
+        display: block;
+        text-align: center;
+        padding: 0;
+        display: none;
+    }
+    
+    header .logo{
+        text-align: center; 
+    }
+    
+    header{
+        background: #000;
+    }
+    
+    .home .home-title{
+        font-size: 22px;
+    }
+    
+    header i.iconMenu{
+        display: block;
+    }
+    
+    .home .button{
+        margin: 2px;
+    }
+    .about-info-btn{
+        margin-bottom: 10px;
+    }
+}
+
+.home{
+    height: 650px;
+    background-image: url(../img/road.PNG);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    
+}
+
+.home-content{
+    position: absolute;
+    top: 40%;
+    left: 25%;
+}
+
+.home .home-title{
+    color: #fff;
+    font-size: 45px;
+    margin-bottom: 20px; 
+}
+
+.home .home-desc{
+    color: #fff;
+    font-size: 18px;
+}
+
+.home .button{
+    background: #7cb62f;
+    color: #fff;
+    width: 150px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*About Us*/
+.section-header{
+    font-size: 40px;
+}
+
+.line{
+    width: 150px;
+    background: #ddd;
+    height: 3px;
+    margin: auto;
+}
+
+.line span{
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #7cb62f;
+}
+
+.test{
+    margin-bottom: 400px;
+}
+
+.about-img img{
+    width: 100%;
+}
+
