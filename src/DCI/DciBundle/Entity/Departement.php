@@ -92,4 +92,14 @@ class Departement
     {
         return $this->region;
     }
+    
+     /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+    
+        return $this->getNomDepartement();
+      
+    }
 }

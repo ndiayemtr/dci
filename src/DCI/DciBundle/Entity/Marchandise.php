@@ -315,7 +315,7 @@ class Marchandise
      * @param \DCI\DciBundle\Entity\ProduitService $produitService
      *
      * @return Marchandise
-     */
+     
     public function setProduitService(\DCI\DciBundle\Entity\ProduitService $produitService)
     {
         $this->produitService = $produitService;
@@ -327,11 +327,12 @@ class Marchandise
      * Get produitService
      *
      * @return \DCI\DciBundle\Entity\ProduitService
-     */
+     
     public function getProduitService()
     {
         return $this->produitService;
     }
+    */
     
     /**
      * Generates the magic method

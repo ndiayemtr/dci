@@ -1,0 +1,15 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row well">
+        {{ form_start(form, {'attr': {'class': 'form-horizinal'}}) }}
+        <div>
+            {{ include('mesformulaire/attribut_entite.html.twig') }}<br>
+            
+        </div>
+            <P style="text-align: center">
+                <button class="btn btn-primary boutonCateEn">Valider</button>
+            </P>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

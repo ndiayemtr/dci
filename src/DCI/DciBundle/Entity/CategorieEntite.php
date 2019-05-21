@@ -62,4 +62,14 @@ class CategorieEntite
     {
         return $this->nomEntite;
     }
+    
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+    
+        return $this->getNomEntite();
+      
+    }
 }

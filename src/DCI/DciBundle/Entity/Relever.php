@@ -24,7 +24,7 @@ class Relever
     /**
      * @var string
      *
-     * @ORM\Column(name="typeCondionnement", type="datetime")
+     * @ORM\Column(name="dateDuRelever", type="string", length=255)
      */
     private $dateDuRelever;
     

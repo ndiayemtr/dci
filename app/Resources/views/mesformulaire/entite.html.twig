@@ -1,0 +1,73 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+    </div>
+
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-5">   
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.code, "Code") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.code) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.code, {'attr': {'class': 'form-control', 'placeholder':'UY/654'}}) }}
+                    </div>          
+
+                </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.libelle, "Libelle") }}</div>
+                    <div class="col-md-7">
+
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.libelle) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.libelle, {'attr': {'class': 'form-control', 'placeholder':'libelle'}}) }}
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.description, "Description") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.description) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.description, {'attr': {'rows': '5','cols': '4'}}) }}
+                    </div>
+                </div><br><br>
+            
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <div class="col-md-5"> {{ form_label(form.departement, "Departement") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.departement) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.departement) }}
+                    </div>
+                </div><br><br>
+                    <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.niveauClassement, "Niveau Classement") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.niveauClassement) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.niveauClassement, {'attr': {'class': 'form-control', 'placeholder':'Niveau Classement'}}) }}
+                    </div>
+                </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.categorieEntite, "Categorie Entite") }}</div>
+                    <div class="col-md-7">            
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.categorieEntite) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.categorieEntite, {'attr': {'class': 'form-control', 'placeholder':'Categorie Entite'}}) }}
+                    </div>
+                </div><br><br>
+                               
+            </div>
+        </div>
+    </div>
+
+</div><!-- box box-primary-->

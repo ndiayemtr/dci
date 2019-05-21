@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-5">   
-                <h4 style="color: #0000F0">Classification</h4>
+                <h4 style="color: #0000F0">Ajouter une nouvelle entité</h4>
                 <div class="form-group">
                     <div class="col-md-5">{{ form_label(form.reference, "Réference") }}</div>
                     <div class="col-md-7">
@@ -18,13 +18,13 @@
 
                 </div><br><br>
                 <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.stade, "Stade Du Marchandise") }}</div>
+                    <div class="col-md-5">{{ form_label(form.stade, "Stade") }}</div>
                     <div class="col-md-7">
 
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.stade) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.stade) }}
+                        {{ form_widget(form.stade, {'attr': {'class': 'form-control', 'placeholder':'stade'}}) }}
                     </div>
                 </div><br><br>
                 <div class="form-group">
@@ -33,99 +33,50 @@
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.categorie) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'placeholder':'Agrcole'}}) }}
+                        {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'placeholder':'Categorie'}}) }}
                     </div>
                 </div><br><br>
+            
+            </div>
+            <div class="col-md-5">
                 <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.sousCategorie, "Sous Categorie") }}</div>
+                    <h4 style="color: #0000F0">Classement</h4>
+                    <div class="col-md-5"> {{ form_label(form.sousCategorie, "sous Categorie") }}</div>
                     <div class="col-md-7">
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.sousCategorie) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.sousCategorie, {'attr': {'class': 'form-control', 'placeholder':'Alimentaire'}}) }}
+                        {{ form_widget(form.sousCategorie) }}
                     </div>
                 </div><br><br>
-                <div class="form-group">
-                    <h4 style="color: #0000F0">Origine</h4>
-                    <div class="col-md-5">{{ form_label(form.origine, "Local ou Import") }}</div>
+                    <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.natuteDuMarcha, "Natute de la Marchandise") }}</div>
                     <div class="col-md-7">
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.origine) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.origine, {'attr': {'class': 'form-control', 'placeholder':'Senegal'}}) }}
-                    </div>
-                </div><br><br>
-                <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.producteur, "Producteurs") }}</div>
-                    <div class="col-md-7">            
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.producteur) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.producteur, {'attr': {'class': 'form-control', 'placeholder':'Rixal'}}) }}
-                    </div>
-                </div><br><br>
-            </div>
-            <div class="col-md-5">
-                <div class="form-group">
-                    <h4 style="color: #0000F0">Conditionnement</h4>
-                    <div class="col-md-5"> {{ form_label(form.typeCondionnement, "Type de condionnement") }}</div>
-                    <div class="col-md-7">
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.typeCondionnement) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.typeCondionnement, {'attr': {'class': 'form-control', 'placeholder':'Sac'}}) }}
-                    </div>
-                </div><br><br>
-                <div class="form-group">
-                    <div class="col-md-5"> {{ form_label(form.unite, "Unité") }}</div>
-                    <div class="col-md-7">
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.unite) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.unite, {'attr': {'class': 'form-control', 'placeholder':'Kg'}}) }}
-                    </div>
-                </div><br><br>
-                <div class="form-group">
-                    <div class="col-md-5"> {{ form_label(form.quantite, "Quantité") }}</div>
-                    <div class="col-md-7">
-
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.quantite) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.quantite, {'attr': {'class': 'form-control', 'placeholder':'50'}}) }}
-                    </div>
-                </div><br><br>
-                <div class="form-group">
-                    <h4 style="color: #0000F0">Caractérisation</h4>
-                    <div class="col-md-5"> {{ form_label(form.natuteDuMarcha, "Nature du marchandise") }}</div>
-                    <div class="col-md-7">
-
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.natuteDuMarcha) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.natuteDuMarcha, {'attr': {'class': 'form-control', 'placeholder':'RIZ'}}) }}
+                        {{ form_widget(form.natuteDuMarcha, {'attr': {'class': 'form-control', 'placeholder':'Natute du Marchandise'}}) }}
                     </div>
                 </div><br><br>
                 <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.typeMarchandise, "Type de Marchandise") }}</div>
-                    <div class="col-md-7">
-
-                        {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.typeMarchandise) }}
-                        {# Génération de l'input. #}
-                        {{ form_widget(form.typeMarchandise, {'attr': {'class': 'form-control', 'placeholder':'Riz brisé parfume'}}) }}
-                    </div>
-                </div><br><br>
-                <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.nonMarchandise, "Nom marchandise") }}</div>
-                    <div class="col-md-7">
-
+                    <div class="col-md-5">{{ form_label(form.nonMarchandise, "Nom de la marchandise") }}</div>
+                    <div class="col-md-7">            
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.nonMarchandise) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.nonMarchandise, {'attr': {'class': 'form-control', 'placeholder':'Riz de la vallée'}}) }}
+                        {{ form_widget(form.nonMarchandise, {'attr': {'class': 'form-control', 'placeholder':'Nom de la marchandise'}}) }}
                     </div>
                 </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.typeMarchandise, "type de la marchandise") }}</div>
+                    <div class="col-md-7">            
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.typeMarchandise) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.typeMarchandise, {'attr': {'class': 'form-control', 'placeholder':'Type de marchandise'}}) }}
+                    </div>
+                </div><br><br>
+                               
             </div>
         </div>
     </div>

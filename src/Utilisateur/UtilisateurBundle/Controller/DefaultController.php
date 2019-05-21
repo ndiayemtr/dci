@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('UtilisateurBundle:Default:index.html.twig');
     }
+    public function testeAction()
+    {
+        return $this->render('UtilisateurBundle:Default:teste.html.twig');
+    }
 }

@@ -50,7 +50,7 @@ class Entite
     private $niveauClassement;
     
     /**
-     * @ORM\OneToOne(targetEntity="DCI\DciBundle\Entity\CategorieEntite", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\CategorieEntite", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorieEntite; 
@@ -214,5 +214,15 @@ class Entite
     public function getDepartement()
     {
         return $this->departement;
+    }
+    
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+    
+        return $this->getLibelle();
+      
     }
 }

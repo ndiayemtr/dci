@@ -2,10 +2,10 @@ utilisateur:
     resource: "@UtilisateurBundle/Resources/config/routing.yml"
     prefix:   /
 
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
-
+#user:
+#    resource: "@UserBundle/Resources/config/routing.yml"
+#    prefix:   /
+#
 dci:
     resource: "@DciBundle/Resources/config/routing.yml"
     prefix:   /
@@ -13,3 +13,8 @@ dci:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+    
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin-dci

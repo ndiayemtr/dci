@@ -2,6 +2,8 @@
 
 namespace Utilisateur\UtilisateurBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Utilisateur\UtilisateurBundle\Repository\UserRepository")
  */
-class User
+class User 
 {
     /**
      * @var int
@@ -19,7 +21,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -27,7 +29,6 @@ class User
      * @ORM\Column(name="nomUser", type="string", length=255)
      */
     private $nomUser;
-
 
     /**
      * Get id
@@ -63,4 +64,3 @@ class User
         return $this->nomUser;
     }
 }
-
