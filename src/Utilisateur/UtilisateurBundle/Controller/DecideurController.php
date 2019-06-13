@@ -1,18 +1,17 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Utilisateur\UtilisateurBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Description of DecideurController
  *
  * @author merDioufa
  */
-class DecideurController {
-    //put your code here
+class DecideurController extends Controller {
+   
+     public function indexAction(){
+        return $this->render('UtilisateurBundle:dci/decideur:index.html.twig');
+    }
 }

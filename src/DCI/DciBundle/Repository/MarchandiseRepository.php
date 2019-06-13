@@ -2,6 +2,8 @@
 
 namespace DCI\DciBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 /**
  * MarchandiseRepository
  *
@@ -18,6 +20,23 @@ class MarchandiseRepository extends \Doctrine\ORM\EntityRepository {
                 ->setParameter('id', $idproSer);
 
         return $qb->getQuery()->getResult();
+    }
+    
+    public function marchandiseDunProduit($page, $nbrAffichPage, $idProduit) {
+        $qb = $this->createQueryBuilder('march')
+                ->select('march')
+                ->leftJoin('march.entite', 'entite')
+                ->andWhere('entite.id =:id')
+                ->setParameter('id', $idProduit)
+                ->orderBy('march.id', 'DESC')
+                ->getQuery();
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
     }
     
 }

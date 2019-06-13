@@ -1,0 +1,63 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <h2 class="titrePage">Liste des produits</h2><br>
+          <table class="table table-striped table-hover">
+                        <thead style="text-align: center">
+                            <tr style="text-align: center">
+                                <th style="text-align: center">Code</th>
+                                 <th style="text-align: center">Libelle</th>
+                                 <th style="text-align: center">Categorie</th>
+                                 <th style="text-align: center">Département</th>
+                                 <th style="text-align: center">Nouveau parametre</th>
+                                 <th style="text-align: center">Marchandise</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cent" style="text-align: center">
+
+                            {% for entiteProduit in entiteProduits %}
+                                <tr> 
+                                    <td style="text-align: center"> {{ entiteProduit.code }} </td>                
+                                    <td style="text-align: center"> {{ entiteProduit.libelle }} </td>
+                                    <td style="text-align: center"> {{ entiteProduit.categorieEntite.nomEntite }} </td>
+                                    <td style="text-align: center"> {{ entiteProduit.departement.nomDepartement }} </td>
+                                    <td style="text-align: center">
+                                        <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_attribut_entite', { 'id' : entiteProduit.id }) }}"><span class="fa fa-plus"> </span></a>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_marchandise', { 'id' : entiteProduit.id }) }}"><span class="fa fa-plus"> </span></a>  <span>&nbsp;</span>| <span>&nbsp;</span>
+                                        <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_list_des_marchandises_produit', { 'id' : entiteProduit.id }) }}"><span class="fa fa-eye"> </span></a>
+                                    </td>
+                                    
+
+                                </tr>
+                            {%endfor%}
+
+                    </tbody>
+                    </table>
+        
+    </div>
+
+    <div class="row">
+        
+        <div class="col-md-12 text-center">                                
+            <div> 
+                <ul class="pagination">
+                    {% for p in range(1, nbrTotalPages) %}
+                        <li{% if p == page %} class="active"{% endif %}>
+                            <a href="{{ path('utilisateur_produits', {'page': p}) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>  
+                <P style="text-align: center">
+                
+                <span class="fa fa-plus"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_entite') }}">Nouveau produits</a></span>
+                <span>&nbsp;</span>
+                <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_categorie_entite') }}">Annuler et Retour</a></span>
+            </P>
+        </div>
+    </div>
+{% endblock %}

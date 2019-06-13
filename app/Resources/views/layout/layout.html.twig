@@ -36,7 +36,14 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="./"> Recherche</a></li>
-                        <li><a href="../navbar-static-top/">Connexion</a></li>
+                        <li>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                               <a href="{{path('fos_user_security_logout') }}" class=""> Se déconnecter </a>
+                              
+                            {% else %}
+                                <a href="{{path('fos_user_security_login') }}" class=""> Se connecter </a>
+                            {% endif %}  
+                        </li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->

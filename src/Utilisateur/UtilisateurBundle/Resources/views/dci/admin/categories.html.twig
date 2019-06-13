@@ -1,0 +1,22 @@
+<h4 class="titrePage">Liste des Categories de produits</h4><br>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<table class="table table-bordered table-striped mb-0">
+    <thead style="text-align: center">
+        <tr style="text-align: center">
+            <th style="text-align: center">nomEntite</th>
+
+        </tr>
+    </thead>
+    <tbody class="cent" style="text-align: center">
+
+        {% for categorie in categories %}
+            <tr> 
+                <td style="text-align: center"> {{ categorie.nomEntite }} </td>                                                
+
+            </tr>
+        {%endfor%}
+
+    </tbody>
+</table>
+        
+</div>

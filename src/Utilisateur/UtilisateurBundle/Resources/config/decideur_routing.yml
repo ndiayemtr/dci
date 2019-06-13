@@ -1,0 +1,4 @@
+utilisateur_decideur:
+    path:     /test-decideur
+    defaults: { _controller: UtilisateurBundle:Decideur:index }
+    

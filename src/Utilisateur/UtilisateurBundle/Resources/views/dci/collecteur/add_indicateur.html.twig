@@ -7,9 +7,12 @@
             {{ include('mesformulaire/indicateur.html.twig') }}<br>
             
         </div>
-            <P style="text-align: center">
+            
+       
+        <P style="text-align: center">
                 <button class="btn btn-primary boutonCateEn">Valider</button>
+                <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_list_des_marchandises_produit', { 'id' : marchandise.entite.id }) }}">Annuler et Retour</a></span>
             </P>
-        {{ form_end(form) }}
+             {{ form_end(form) }}
     </div>
-{% endblock %}
+{% endblock %}    

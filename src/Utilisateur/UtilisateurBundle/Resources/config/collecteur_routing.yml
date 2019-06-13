@@ -1,0 +1,16 @@
+utilisateur_collecteur:
+    path:     /index/{page}
+    defaults: 
+        _controller: UtilisateurBundle:Collecteur:voirlesIndiCaDepart
+        page:        1 
+    requirements:
+        page: \d*
+        
+utilisateur_collecteur_relever:
+    path:     /voir-relever/{page}
+    defaults: 
+        _controller: UtilisateurBundle:Collecteur:voirlesReleveDepart
+        page:        1 
+    requirements:
+        page: \d*
+    

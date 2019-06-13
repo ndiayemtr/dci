@@ -5,15 +5,24 @@
 
     <div class="box-body">
         <div class="row">
-            <div class="col-md-offset-4 col-md-5">
+            <div class="col-md-8">
                 <h4 style="color: #0000F0">Ajouter une nouvelle Categorie</h4><br>
                 <div class="form-group">
-                    <div class="col-md-4">{{ form_label(form.nomEntite, "Nom Categorie") }}</div>
+                    <div class="col-md-4">{{ form_label(form.nomEntite, "Nom ") }}</div>
                     <div class="col-md-5">
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.nomEntite) }}
                         {# Génération de l'input. #}
                         {{ form_widget(form.nomEntite, {'attr': {'class': 'form-control', 'placeholder':'entrez une categorie'}}) }}
+                    </div>          
+                </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-4">{{ form_label(form.typeCat, "Type Categorie") }}</div>
+                    <div class="col-md-5">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.typeCat) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.typeCat, {'attr': {'class': 'form-control'}}) }}
                     </div>          
                 </div>
 

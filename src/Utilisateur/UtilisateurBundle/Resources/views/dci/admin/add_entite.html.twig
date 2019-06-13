@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="row">
-        <h2 class="titrePage">Entrez un nouvelle entité de produit</h2><br>
+        <h2 class="titrePage">Entrez un nouvelle entité </h2><br>
         {{ form_start(form, {'attr': {'class': 'form-horizinal'}}) }}
         <div>
             {{ include('mesformulaire/entite.html.twig') }}<br>
@@ -10,7 +10,7 @@
         </div>
             <P style="text-align: center">
                 <button class="btn btn-primary boutonV">Valider <span class="fa fa-check"></span></button>
-                <span class="fa fa-eye"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_categorie_entite') }}">Voir les produits</a></span>
+                <span class="fa fa-eye"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_produits') }}">Voir les produits</a></span>
                 <br><br>
                 <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_categorie_entite') }}">Annuler et Retour</a></span>
             </P>

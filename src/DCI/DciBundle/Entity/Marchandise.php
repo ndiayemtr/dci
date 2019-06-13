@@ -38,9 +38,9 @@ class Marchandise
     /**
      * @var string
      *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\Column(name="origine", type="string", length=255)
      */
-    private $categorie;
+    private $origine;
 
     /**
      * @var string
@@ -48,12 +48,6 @@ class Marchandise
      * @ORM\Column(name="sousCategorie", type="string", length=255)
      */
     private $sousCategorie;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="origine", type="string", length=255)
-     */
     
     /**
      * @var string
@@ -139,30 +133,6 @@ class Marchandise
     public function getStade()
     {
         return $this->stade;
-    }
-
-    /**
-     * Set categorie
-     *
-     * @param string $categorie
-     *
-     * @return Marchandise
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
-
-    /**
-     * Get categorie
-     *
-     * @return string
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
     }
 
     /**

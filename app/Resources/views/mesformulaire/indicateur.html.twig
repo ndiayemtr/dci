@@ -5,8 +5,9 @@
 
     <div class="box-body">
         <div class="row">
+            <h4 style="color: #0000F0; text-align: center">Ajouter un nouveau Indicateur</h4><br>
             <div class="col-md-5">   
-                <h4 style="color: #0000F0">Ajouter un nouveau Indicateur</h4>
+                
                 <div class="form-group">
                     <div class="col-md-5">{{ form_label(form.libelle, "Libelle") }}</div>
                     <div class="col-md-7">
@@ -36,17 +37,25 @@
                         {{ form_widget(form.producteur, {'attr': {'class': 'form-control', 'placeholder':'Producteur'}}) }}
                     </div>
                 </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(form.departement, "Département") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.departement) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.departement) }}
+                    </div>
+                </div><br><br>
             
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <h4 style="color: #0000F0">Classement</h4>
-                    <div class="col-md-5"> {{ form_label(form.unite, "exemple Kg") }}</div>
+                    <div class="col-md-5"> {{ form_label(form.unite, "Unité") }}</div>
                     <div class="col-md-7">
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.unite) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.unite) }}
+                        {{ form_widget(form.unite, {'attr': {'class': 'form-control', 'placeholder': 'exemple Kg'}}) }}
                     </div>
                 </div><br><br>
                     <div class="form-group">
@@ -55,7 +64,7 @@
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.periodicite) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.periodicite, {'attr': {'class': 'form-control', 'placeholder':''}}) }}
+                        {{ form_widget(form.periodicite, {'attr': {'class': 'form-control periodicite', 'placeholder':'clic pour choisir'}}) }}
                     </div>
                 </div><br><br>
                 <div class="form-group">

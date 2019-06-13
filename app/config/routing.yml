@@ -1,6 +1,16 @@
 utilisateur:
     resource: "@UtilisateurBundle/Resources/config/routing.yml"
     prefix:   /
+    
+#les route pour les collecteurs
+utilisateur_collecteur:
+    resource: "@UtilisateurBundle/Resources/config/collecteur_routing.yml"
+    prefix:   /
+
+#les route pour les decideurs
+utilisateur_decideur:
+    resource: "@UtilisateurBundle/Resources/config/decideur_routing.yml"
+    prefix:   /
 
 #user:
 #    resource: "@UserBundle/Resources/config/routing.yml"

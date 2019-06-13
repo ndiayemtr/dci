@@ -36,7 +36,7 @@ class Relever
     private $quantite;
     
     /**
-     * @ORM\OneToOne(targetEntity="DCI\DciBundle\Entity\Indicateur", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Indicateur", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $indicateur;

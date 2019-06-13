@@ -2,6 +2,8 @@
 
 namespace Utilisateur\UtilisateurBundle\Entity;
 
+use Utilisateur\UtilisateurBundle\Entity\InfoUser as info;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="admin")
  * @ORM\Entity(repositoryClass="Utilisateur\UtilisateurBundle\Repository\AdminRepository")
  */
-class Admin
+class Admin 
 {
     /**
      * @var int
@@ -20,18 +22,74 @@ class Admin
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\InfoUser", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $infoUser;
     
     /**
      * @ORM\OneToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\UserConnexion", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $userConnexion;
+    
+    /**
+     * Set numeroTel
+     *
+     * @param integer $numeroTel
+     *
+     * @return InfoUser
+     */
+    public function setNumeroTel($numeroTel)
+    {
+        $this->numeroTel = $numeroTel;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroTel
+     *
+     * @return int
+     */
+    public function getNumeroTel()
+    {
+        return $this->numeroTel;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return InfoUser
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return InfoUser
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
 
 
     /**

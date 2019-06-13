@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
 class CategorieEntiteType extends AbstractType
 {
     /**
@@ -13,7 +15,12 @@ class CategorieEntiteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomEntite');
+        $builder->add('nomEntite')->add('typeCat',  ChoiceType::class, [
+        'choices'  => [
+        'Produit' => 'Produit',
+        'Service' => 'Service',
+    ],
+    ]);
     }
     
     /**

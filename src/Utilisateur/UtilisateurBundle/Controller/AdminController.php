@@ -38,6 +38,8 @@ class AdminController extends Controller {
             
             $em->persist($entite);
             $em->flush();
+            
+            return $this->redirectToRoute('utilisateur_entite');
         
          }
         return $this->render('UtilisateurBundle:dci/admin:add_entite.html.twig',  array(
@@ -153,20 +155,30 @@ class AdminController extends Controller {
         $indicateur = new Indicateur();
         $form = $this->createForm(IndicateurType::class, $indicateur);
         $form->handleRequest($request);
+         $marchandise = $em->getRepository('DciBundle:Marchandise')->find($id);
         
          if ($request->isMethod('POST') && $form->isValid()) {
-             $marchandise = $em->getRepository('DciBundle:Marchandise')->find($id);
+             
+
              $indicateur->setMarchandise($marchandise);
              $em->persist($indicateur);
              $em->flush();
             
-             return $this->redirectToRoute('utilisateur_indicateur', array('id' => $id));                
+             //return $this->redirectToRoute('utilisateur_indicateur', array('id' => $id));                
         
          }
         return $this->render('UtilisateurBundle:dci/collecteur:add_indicateur.html.twig',  array(
                     'form' => $form->createView(),
+                    'marchandise' => $marchandise,
         ));
     }
+    /**
+     * Peret de faire un relévé
+     * 
+     * @param type $id
+     * @param Request $request
+     * @return type
+     */
     public function releverAction($id, Request $request){
         $em = $this->getDoctrine()->getManager();
         $relever = new Relever();
@@ -184,6 +196,120 @@ class AdminController extends Controller {
          }
         return $this->render('UtilisateurBundle:dci/collecteur:add_relever.html.twig',  array(
                     'form' => $form->createView(),
+                    'id' => $id,
+        ));
+    }
+    /**
+     * Voir tous les produits disponible
+     * 
+     * @param type $page
+     * @return type
+     * @throws NotFoundHttpException
+     * @throws type
+     */
+    public function produitsAction($page){
+         if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+         //je fixe je nombre d'annoce par page
+        $nbrAttPage = 4;
+        
+         $em = $this->getDoctrine()->getManager();
+        $entiteProduit = $em->getRepository('DciBundle:Entite')->allProduits($page, $nbrAttPage);
+        
+        // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($entiteProduit) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
+        }
+        return $this->render('UtilisateurBundle:dci/admin:produits.html.twig', array(
+                    'entiteProduits' => $entiteProduit,
+                    'page' => $page,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
+    
+    public function listMarchandiseAction($id, $page){
+         if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+         //je fixe je nombre d'annoce par page
+        $nbrAttPage = 4;
+        
+         $em = $this->getDoctrine()->getManager();
+        $marchandiseProduit = $em->getRepository('DciBundle:Marchandise')->marchandiseDunProduit($page, $nbrAttPage, $id);
+         $entiteProduit = $em->getRepository('DciBundle:Entite')->find($id);
+        
+          // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($marchandiseProduit) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page" . $page . " n'existe pas.");
+        }
+        return $this->render('UtilisateurBundle:dci/admin:marchandise_produit.html.twig', array(
+                    'marchandiseProduits' => $marchandiseProduit,
+                    'page' => $page,
+                    'entiteProduit' => $entiteProduit,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
+    
+    /**
+     * liste des indicateurs d'une marchandise
+     * 
+     * @param type $id
+     * @param type $page
+     * @return type
+     * @throws NotFoundHttpException
+     * @throws type
+     */
+    public function listIndicateurAction($id, $page){
+         if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+         //je fixe je nombre d'annoce par page
+        $nbrAttPage = 4;
+        
+         $em = $this->getDoctrine()->getManager();
+        $indicateurMarchandises = $em->getRepository('DciBundle:Indicateur')->indicateurDunMarch($page, $nbrAttPage, $id);
+         $marchandise = $em->getRepository('DciBundle:Marchandise')->find($id);
+        
+          // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($indicateurMarchandises) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page" . $page . " n'existe pas.");
+        }
+        return $this->render('UtilisateurBundle:dci/admin:liste_indicateur.html.twig', array(
+                    'indicateurMarchandises' => $indicateurMarchandises,
+                    'page' => $page,
+                    'marchandise' => $marchandise,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
+    
+    /**
+     * la liste des categories
+     * 
+     * @return type
+     */
+    public function listCategorieAction(){
+        
+         $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('DciBundle:CategorieEntite')->findAll();
+ 
+        return $this->render('UtilisateurBundle:dci/admin:categories.html.twig', array(
+                    'categories' => $categories,
         ));
     }
 }

@@ -2,7 +2,8 @@ security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
     role_hierarchy:
-        ROLE_ADMIN: [ROLE_USER,ROLE_COLLECTEUR,ROLE_DECIDEUR,ROLE_GESTIONNAIRE] 
+        ROLE_ADMIN: [ROLE_USER,ROLE_COLLECTEUR_DEPART, ROLE_COLLECTEUR_REGION, 
+                       ROLE_DECIDEUR_DEPART, ROLE_DECIDEUR_REGION, ROLE_DECIDEUR_NATION, ROLE_GESTIONNAIRE] 
         ROLE_SUPER_ADMIN: [ROLE_ADMIN]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded

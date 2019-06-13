@@ -23,3 +23,28 @@ a{
 .titrePage{
     text-align: center;
 }
+
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
+.formCat{
+    padding-left: 100px;
+}
+
+.tabCat{
+    padding-right: 100px;
+}
+
+.smsCat{
+    color: seagreen;
+}
+
+.titrePage{
+    text-align: center;
+}

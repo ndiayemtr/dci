@@ -2,6 +2,8 @@
 
 namespace Utilisateur\UtilisateurBundle\Entity;
 
+use Utilisateur\UtilisateurBundle\Entity\InfoUser as info;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="collecteur")
  * @ORM\Entity(repositoryClass="Utilisateur\UtilisateurBundle\Repository\CollecteurRepository")
  */
-class Collecteur
+class Collecteur 
 {
     /**
      * @var int
@@ -35,16 +37,103 @@ class Collecteur
     private $departement;
     
     /**
-     * @ORM\OneToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\InfoUser", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $infoUser;
-    
-    /**
      * @ORM\OneToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\UserConnexion", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $userConnexion;
+    
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="numeroTel", type="integer")
+     */
+    private $numeroTel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    private $nom;
+
+    /**
+     * Set numeroTel
+     *
+     * @param integer $numeroTel
+     *
+     * @return InfoUser
+     */
+    public function setNumeroTel($numeroTel)
+    {
+        $this->numeroTel = $numeroTel;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroTel
+     *
+     * @return int
+     */
+    public function getNumeroTel()
+    {
+        return $this->numeroTel;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return InfoUser
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * Set nom
+     *
+     * @param string $nom
+     *
+     * @return InfoUser
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
 
 
     /**
@@ -103,30 +192,6 @@ class Collecteur
     public function getDepartement()
     {
         return $this->departement;
-    }
-
-    /**
-     * Set infoUser
-     *
-     * @param \Utilisateur\UtilisateurBundle\Entity\InfoUser $infoUser
-     *
-     * @return Collecteur
-     */
-    public function setInfoUser(\Utilisateur\UtilisateurBundle\Entity\InfoUser $infoUser)
-    {
-        $this->infoUser = $infoUser;
-
-        return $this;
-    }
-
-    /**
-     * Get infoUser
-     *
-     * @return \Utilisateur\UtilisateurBundle\Entity\InfoUser
-     */
-    public function getInfoUser()
-    {
-        return $this->infoUser;
     }
 
     /**

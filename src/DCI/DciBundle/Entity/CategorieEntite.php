@@ -24,6 +24,13 @@ class CategorieEntite
     /**
      * @var string
      *
+     * @ORM\Column(name="typeCat", type="string", columnDefinition="enum('Produit', 'Service')")
+     */
+    private $typeCat;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nomEntite", type="string", length=50)
      */
     private $nomEntite;
@@ -71,5 +78,30 @@ class CategorieEntite
     
         return $this->getNomEntite();
       
+    }
+
+
+    /**
+     * Set typeCat
+     *
+     * @param string $typeCat
+     *
+     * @return CategorieEntite
+     */
+    public function setTypeCat($typeCat)
+    {
+        $this->typeCat = $typeCat;
+
+        return $this;
+    }
+
+    /**
+     * Get typeCat
+     *
+     * @return string
+     */
+    public function getTypeCat()
+    {
+        return $this->typeCat;
     }
 }

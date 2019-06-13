@@ -29,7 +29,7 @@ class Departement
     private $nomDepartement;
     
     /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Region", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Region")
      * @ORM\JoinColumn(nullable=false)
      */
     private $region;

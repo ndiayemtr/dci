@@ -2,6 +2,8 @@ utilisateur_homepage:
     path:     /
     defaults: { _controller: UtilisateurBundle:Default:index }
     
+        #*******Ajouter******************** 
+
 #Ajouter une nouvelle entité
 utilisateur_entite:
     path:     /add-entite
@@ -26,6 +28,10 @@ utilisateur_attribut_marchandise:
 utilisateur_indicateur:
     path:     /indicateur/{id}
     defaults: { _controller: UtilisateurBundle:Admin:indicateur }
+#Indicateur
+utilisateur_indicateur:
+    path:     /indicateur/{id}
+    defaults: { _controller: UtilisateurBundle:Admin:indicateur }
     
 #Relever d'indicateur
 utilisateur_relever:
@@ -36,6 +42,45 @@ utilisateur_relever:
 utilisateur_marchandise:
     path:     /add-marchandise/{id}
     defaults: { _controller: UtilisateurBundle:Admin:addMarchandise }
+    
+       #*******Lister******************** 
+    
+#List des produits
+utilisateur_produits:
+    path:     /produits/{page}
+    defaults: 
+        _controller: UtilisateurBundle:Admin:produits
+        page:        1 
+    requirements:
+        page: \d*
+        
+#List des marchandises d'un produit
+utilisateur_list_des_marchandises_produit:
+    path:     /lis-marchandise/{id}/{page}
+    defaults: 
+        _controller: UtilisateurBundle:Admin:listMarchandise
+        page:        1 
+    requirements:
+        page: \d*
+        
+#List des indicateurs d'une marchandise
+utilisateur_list_des_indicateur_marchandises:
+    path:     /lis-indicateur/{id}/{page}
+    defaults: 
+        _controller: UtilisateurBundle:Admin:listIndicateur
+        page:        1 
+    requirements:
+        page: \d*
+        
+#List des categories
+utilisateur_list_categorie:
+    path:     /list-categories
+    defaults: 
+        _controller: UtilisateurBundle:Admin:listCategorie
+        
+
+
+       
     
     
     

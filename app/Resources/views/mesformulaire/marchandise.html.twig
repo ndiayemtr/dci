@@ -6,7 +6,7 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-5">   
-                <h4 style="color: #0000F0">Ajouter une nouvelle entité</h4>
+                {#<h4 style="color: #0000F0">Ajouter une nouvelle entité</h4>#}
                 <div class="form-group">
                     <div class="col-md-5">{{ form_label(form.reference, "Réference") }}</div>
                     <div class="col-md-7">
@@ -20,7 +20,6 @@
                 <div class="form-group">
                     <div class="col-md-5">{{ form_label(form.stade, "Stade") }}</div>
                     <div class="col-md-7">
-
                         {# Affichage des erreurs pour ce champ précis. #}
                         {{ form_errors(form.stade) }}
                         {# Génération de l'input. #}
@@ -28,19 +27,18 @@
                     </div>
                 </div><br><br>
                 <div class="form-group">
-                    <div class="col-md-5">{{ form_label(form.categorie, "Categorie") }}</div>
+                    <div class="col-md-5">{{ form_label(form.origine, "Origine") }}</div>
                     <div class="col-md-7">
                         {# Affichage des erreurs pour ce champ précis. #}
-                        {{ form_errors(form.categorie) }}
+                        {{ form_errors(form.origine) }}
                         {# Génération de l'input. #}
-                        {{ form_widget(form.categorie, {'attr': {'class': 'form-control', 'placeholder':'Categorie'}}) }}
+                        {{ form_widget(form.origine, {'attr': {'class': 'form-control', 'placeholder':'origine'}}) }}
                     </div>
                 </div><br><br>
             
             </div>
             <div class="col-md-5">
                 <div class="form-group">
-                    <h4 style="color: #0000F0">Classement</h4>
                     <div class="col-md-5"> {{ form_label(form.sousCategorie, "sous Categorie") }}</div>
                     <div class="col-md-7">
                         {# Affichage des erreurs pour ce champ précis. #}

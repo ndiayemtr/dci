@@ -8,13 +8,62 @@ easy_admin:
         max_results: 7
         
     entities:
-        - Utilisateur\UtilisateurBundle\Entity\Admin
-        - Utilisateur\UtilisateurBundle\Entity\Collecteur
-        - Utilisateur\UtilisateurBundle\Entity\Decideur
-        - Utilisateur\UtilisateurBundle\Entity\Gestionnaire
-        - Utilisateur\UtilisateurBundle\Entity\InfoUser
-        - Utilisateur\UtilisateurBundle\Entity\UserConnexion
-        - DCI\DciBundle\Entity\Region
-        - DCI\DciBundle\Entity\Departement
+        Admin:
+            class: Utilisateur\UtilisateurBundle\Entity\Admin
+            label: 'Admin'
+            controller: Utilisateur\UtilisateurBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'numeroTel' }
+                - { property: 'prenom'} 
+                - { property: 'nom' }
+               
+        Collecteur:
+            class: Utilisateur\UtilisateurBundle\Entity\Collecteur
+            label: 'Collecteur'
+            controller: Utilisateur\UtilisateurBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'numeroTel' }
+                - { property: 'prenom'} 
+                - { property: 'nom' }
+                - { property: 'typeCollecteur', type: 'choice', type_options: {choices: {'Departemental':'Departemental','Regionale':'Regionale'}}}
+                - { property: 'departement'}
+                
+        Decideur:
+            class: Utilisateur\UtilisateurBundle\Entity\Decideur
+            label: 'Decideur'
+            controller: Utilisateur\UtilisateurBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'numeroTel' }
+                - { property: 'prenom'} 
+                - { property: 'nom' }
+                - { property: 'TypeDecdeur', type: 'choice', type_options: {choices: {'Departemental':'Departemental','Regionale':'Regionale','Nationnale':'Nationnale'}}}
+        
+        Gestionnaire:
+            class: Utilisateur\UtilisateurBundle\Entity\Gestionnaire
+            label: 'Gestionnaire'
+            controller: Utilisateur\UtilisateurBundle\Controller\UserController
+            form:
+                fields:
+                - { property: 'numeroTel' }
+                - { property: 'prenom'} 
+                - { property: 'nom' }
+                
+        
+        UserConnexion:
+            class: Utilisateur\UtilisateurBundle\Entity\UserConnexion
+            label: 'User Connexion'
+        
+        Region:
+            class: DCI\DciBundle\Entity\Region
+            label: 'Region'
+        
+        Departement:
+            class: DCI\DciBundle\Entity\Departement
+            label: 'Departement'
+            
+                
 
            
