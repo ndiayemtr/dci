@@ -1,0 +1,30 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('souscategorieentite_index') }}"><span class="fa fa-arrow-circle-left"></span> Les produits lié aux sous categories </a>
+            | Ajouter une entité d'une sous categorie
+        </p>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Creation d'une sous categorie d'entité</h2>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Valider" class="btn btn-primary btn-group-justified" />
+            {{ form_end(form) }}
+            <br>
+  
+            <a style="text-decoration: none;" href="{{  path('souscategorieentite_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+
+            </div>
+         
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+

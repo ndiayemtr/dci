@@ -25,12 +25,12 @@ a{
 }
 
 .my-custom-scrollbar {
-position: relative;
-height: 200px;
-overflow: auto;
+    position: relative;
+    height: 200px;
+    overflow: auto;
 }
 .table-wrapper-scroll-y {
-display: block;
+    display: block;
 }
 
 .formCat{
@@ -48,3 +48,93 @@ display: block;
 .titrePage{
     text-align: center;
 }
+
+.colorSousTitre{
+    color: #003eff;
+}
+
+.btn1 {
+    border: none;
+    outline: none;
+    padding: 10px 16px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/*.active, .btn1:hover {
+  background-color: #666;
+  color: red;
+}*/
+
+#menu li a.active {
+    color:#fff;
+    background-color:#337ab7;
+    border-color:#2e6da4
+}
+
+/*Debut css arborescence*/
+.tree, .tree ul {
+    margin:0;
+    padding:0;
+    list-style:none
+}
+.tree ul {
+    margin-left:1em;
+    position:relative
+}
+.tree ul ul {
+    margin-left:.5em
+}
+.tree ul:before {
+    content:"";
+    display:block;
+    width:0;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    border-left:1px solid
+}
+.tree li {
+    margin:0;
+    padding:0 1em;
+    line-height:2em;
+    color:#369;
+    font-weight:700;
+    position:relative
+}
+.tree ul li:before {
+    content:"";
+    display:block;
+    width:10px;
+    height:0;
+    border-top:1px solid;
+    margin-top:-1px;
+    position:absolute;
+    top:1em;
+    left:0
+}
+.tree ul li:last-child:before {
+    background:#fff;
+    height:auto;
+    top:1em;
+    bottom:0
+}
+.indicator {
+    margin-right:5px;
+}
+.tree li a {
+    text-decoration: none;
+    color:#369;
+}
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    color:#369;
+    border:none;
+    background:transparent;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;
+    outline: 0;
+}
+/*Fin arborescence*/
+

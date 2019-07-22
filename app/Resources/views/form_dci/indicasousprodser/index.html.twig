@@ -1,0 +1,59 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicasousprodser_index') }}"><span class="fa fa-arrow-circle-left"></span> Indicateur lié aux sous produit ou service</a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="titrePage panel-title">La liste des indicateurs des sous produits/services</h2>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Sous catagorie</th>
+                    <th>Indicateur</th>
+                    <th>Date Indica.</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for indicaSousProdSer in indicaSousProdSers %}
+                    <tr>
+                        <td>{{ indicaSousProdSer.id }}</td>
+                        <td>{{ indicaSousProdSer.sousCateEntite.nomEntite }}</td>
+                        <td>{{ indicaSousProdSer.indicateur.libelle }}</td>
+                        <td>{{ indicaSousProdSer.indicateur.dateIndi }}</td>
+                        <td>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_show', { 'id': indicaSousProdSer.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_edit', { 'id': indicaSousProdSer.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
+                            <span>&nbsp;&nbsp;</span> 
+                                    <a style="text-decoration: none; color: #003eff" href="{{ path('releversousprodser_new', { 'id': indicaSousProdSer.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <P>
+        <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur a un sous produit ou service</a>
+                 <span>&nbsp;&nbsp;</span>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('releversousprodser_index') }}"><span class="glyphicon glyphicon-eye-open"></span> La liste des relevées des sous categiries de produit ou service</a>
+    </P>
+    
+       <div style="text-align: center"> 
+        <ul class="pagination">
+            {% for p in range(1, nbrTotalPages) %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ path('indicasousprodser_index', {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

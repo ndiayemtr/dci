@@ -3,22 +3,80 @@ utilisateur:
     prefix:   /
     
 #les route pour les collecteurs
-utilisateur_collecteur:
-    resource: "@UtilisateurBundle/Resources/config/collecteur_routing.yml"
-    prefix:   /
+#utilisateur_collecteur:
+#    resource: "@UtilisateurBundle/Resources/config/collecteur_routing.yml"
+#    prefix:   /
 
 #les route pour les decideurs
-utilisateur_decideur:
-    resource: "@UtilisateurBundle/Resources/config/decideur_routing.yml"
-    prefix:   /
+#utilisateur_decideur:
+#    resource: "@UtilisateurBundle/Resources/config/decideur_routing.yml"
+#    prefix:   /
 
 #user:
 #    resource: "@UserBundle/Resources/config/routing.yml"
 #    prefix:   /
 #
-dci:
-    resource: "@DciBundle/Resources/config/routing.yml"
-    prefix:   /
+#dci:
+#    resource: "@DciBundle/Resources/config/routing.yml"
+#    prefix:   /
+    
+#Les routes pour CRUD Indicateur
+dci_indicateur:
+    resource: "@DciBundle/Resources/config/routing/indicateur.yml"
+    prefix:   /indicateur
+  
+#Les routes pour CRUD Marchandise
+dci_marchandise:
+    resource: "@DciBundle/Resources/config/routing/marchandise.yml"
+    prefix:   /marchandise
+    
+    
+#Les routes pour CRUD SousCategorieEntite    
+dci_souscategorieentite:
+    resource: "@DciBundle/Resources/config/routing/souscategorieentite.yml"
+    prefix:   /souscategorieentite
+    
+#Les routes pour CRUD indicaSousProdser     
+dci_indicasousprodser:
+    resource: "@DciBundle/Resources/config/routing/indicasousprodser.yml"
+    prefix:   /indicasousprodser
+    
+#Les routes pour CRUD indicaProdser 
+dci_indicaprodser:
+    resource: "@DciBundle/Resources/config/routing/indicaprodser.yml"
+    prefix:   /indicaprodser
+    
+#Les routes pour CRUD indicaProdser 
+dci_categorieentite:
+    resource: "@DciBundle/Resources/config/routing/categorieentite.yml"
+    prefix:   /categorieentite
+    
+#Les routes pour CRUD indicateur marchandise
+dci_indicamarcha:
+    resource: "@DciBundle/Resources/config/routing/indicamarcha.yml"
+    prefix:   /indicamarcha
+    
+#Les routes pour CRUD relever produid ou service
+dci_relever:
+    resource: "@DciBundle/Resources/config/routing/relever.yml"
+    prefix:   /relever
+    
+#Les routes pour CRUD relever produid ou service
+dci_arborescence:
+    resource: "@DciBundle/Resources/config/routing/arborescence.yml"
+    prefix:   /arborescence
+ 
+#Les routes pour CRUD relever marchandise 
+dci_relevermarchandise:
+    resource: "@DciBundle/Resources/config/routing/relevermarchandise.yml"
+    prefix:   /relevermarchandise
+
+#Les routes pour CRUD relever sous produit ou service
+dci_releversousprodser:
+    resource: "@DciBundle/Resources/config/routing/releversousprodser.yml"
+    prefix:   /releversousprodser
+    
+
 
 app:
     resource: '@AppBundle/Controller/'

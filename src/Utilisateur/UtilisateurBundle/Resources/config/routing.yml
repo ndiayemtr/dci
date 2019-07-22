@@ -1,82 +1,108 @@
-utilisateur_homepage:
-    path:     /
-    defaults: { _controller: UtilisateurBundle:Default:index }
-    
-        #*******Ajouter******************** 
-
-#Ajouter une nouvelle entité
-utilisateur_entite:
-    path:     /add-entite
-    defaults: { _controller: UtilisateurBundle:Admin:addEtitite }
-    
-#Ajouter une nouvelle Categorie d'entité
-utilisateur_categorie_entite:
-    path:     /add-categorie-entite
-    defaults: { _controller: UtilisateurBundle:Admin:addCategorieEtitite }
-    
-#Ajouter de nouvelles attributs d'entité
-utilisateur_attribut_entite:
-    path:     /add-attribut-entite/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:addAttributEtitite }
-    
-#Ajouter de nouvelles attributs de marchandise
-utilisateur_attribut_marchandise:
-    path:     /add-attribut-marchandise/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:addAttributMarchandise }
-    
-#Indicateur
-utilisateur_indicateur:
-    path:     /indicateur/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:indicateur }
-#Indicateur
-utilisateur_indicateur:
-    path:     /indicateur/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:indicateur }
-    
-#Relever d'indicateur
-utilisateur_relever:
-    path:     /relever/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:relever }
-    
-#Ajouter de nouvelles marchandise
-utilisateur_marchandise:
-    path:     /add-marchandise/{id}
-    defaults: { _controller: UtilisateurBundle:Admin:addMarchandise }
-    
-       #*******Lister******************** 
-    
-#List des produits
-utilisateur_produits:
-    path:     /produits/{page}
-    defaults: 
-        _controller: UtilisateurBundle:Admin:produits
-        page:        1 
-    requirements:
-        page: \d*
-        
-#List des marchandises d'un produit
-utilisateur_list_des_marchandises_produit:
-    path:     /lis-marchandise/{id}/{page}
-    defaults: 
-        _controller: UtilisateurBundle:Admin:listMarchandise
-        page:        1 
-    requirements:
-        page: \d*
-        
-#List des indicateurs d'une marchandise
-utilisateur_list_des_indicateur_marchandises:
-    path:     /lis-indicateur/{id}/{page}
-    defaults: 
-        _controller: UtilisateurBundle:Admin:listIndicateur
-        page:        1 
-    requirements:
-        page: \d*
-        
-#List des categories
-utilisateur_list_categorie:
-    path:     /list-categories
-    defaults: 
-        _controller: UtilisateurBundle:Admin:listCategorie
+#utilisateur_homepage:
+#    path:     /
+#    defaults: { _controller: UtilisateurBundle:Default:index }
+#    
+#        #*******Ajouter******************** 
+#
+##Ajouter une nouvelle entité
+#utilisateur_entite:
+#    path:     /add-entite
+#    defaults: { _controller: UtilisateurBundle:Admin:addEtitite }
+#    
+##Ajouter une nouvelle Categorie d'entité
+#utilisateur_categorie_entite:
+#    path:     /add-categorie-entite
+#    defaults: { _controller: UtilisateurBundle:Admin:addCategorieEtitite }
+#    
+##Ajouter une nouvelle Sous Categorie d'entité
+#utilisateur_sous_cat_entite:
+#    path:     /add-sous-cat-entite
+#    defaults: { _controller: UtilisateurBundle:Admin:addSousCategorieEtitite }
+#    
+##Ajouter de nouvelles attributs d'entité
+#utilisateur_attribut_entite:
+#    path:     /add-attribut-entite/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:addAttributEtitite }
+#    
+##Ajouter de nouvelles attributs de marchandise
+#utilisateur_attribut_marchandise:
+#    path:     /add-attribut-marchandise/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:addAttributMarchandise }
+#    
+##Indicateur
+#utilisateur_indicateur:
+#    path:     /indicateur/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:indicateur }
+#    
+##Indicateur produit ou service
+#indicateur_prod_service:
+#    path:     /indica-pro-serv/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:indicaProdSer }
+#    
+##Relever d'indicateur
+#utilisateur_relever:
+#    path:     /relever/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:relever }
+#    
+##Ajouter de nouvelles marchandise
+#utilisateur_marchandise:
+#    path:     /add-marchandise/{id}
+#    defaults: { _controller: UtilisateurBundle:Admin:addMarchandise }
+#    
+#       #*******Lister******************** 
+#    
+##List des produits
+#utilisateur_produits:
+#    path:     /produits/{page}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:produits
+#        page:        1 
+#    requirements:
+#        page: \d*
+#        
+##List des produits
+#utilisateur_list_sous_cat_entite:
+#    path:     /list-sous-cat-entite/{id}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:listSousCatEntite
+#        
+##List des marchandises d'un produit
+#utilisateur_list_des_marchandises_produit:
+#    path:     /lis-marchandise/{id}/{page}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:listMarchandise
+#        page:        1 
+#    requirements:
+#        page: \d*
+#        
+##List des indicateurs d'une marchandise
+#utilisateur_list_des_indicateur_marchandises:
+#    path:     /lis-indicateur/{id}/{page}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:listIndicateur
+#        page:        1 
+#    requirements:
+#        page: \d*
+##List de tous indicateurs 
+#utilisateur_all_des_indicateur:
+#    path:     /all-indicateur/{page}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:indicateurAll
+#        page:        1 
+#    requirements:
+#        page: \d*
+#        
+##List des categories
+#utilisateur_list_categorie:
+#    path:     /list-categories
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:listCategorie
+#        
+##List des indicateurs d'une sous categories entites
+#list_indi_categorie_entite:
+#    path:     /list-indi-categ-entite/{id}
+#    defaults: 
+#        _controller: UtilisateurBundle:Admin:litsIndiCatEntite
         
 
 

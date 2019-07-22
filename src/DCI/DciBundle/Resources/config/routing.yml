@@ -1,3 +1,7 @@
+dci_indicasousprodser:
+    resource: "@DciBundle/Resources/config/routing/indicasousprodser.yml"
+    prefix:   /indicasousprodser
+
 dci_add_produit:
     path:     /add-produit
     defaults: { _controller: DciBundle:Dci:addProduit }

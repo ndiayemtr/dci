@@ -1,0 +1,70 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+      <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicateur_index') }}"><span class="fa fa-arrow-circle-left"></span> Tous les Indicateurs </a>
+            | Afficher un indicateur
+        </p>
+    </div>
+   <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Affiche d'un Indicateur</h3>
+        </div>
+
+   <table class="table">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <td>{{ indicateur.id }}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ indicateur.reference }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ indicateur.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Typedata</th>
+                <td>{{ indicateur.typeData }}</td>
+            </tr>
+            <tr>
+                <th>Unite</th>
+                <td>{{ indicateur.unite }}</td>
+            </tr>
+            <tr>
+                <th>Mode</th>
+                <td>{{ indicateur.mode }}</td>
+            </tr>
+            <tr>
+                <th>Niveau</th>
+                <td>{{ indicateur.niveau }}</td>
+            </tr>
+            <tr>
+                <th>Periodicite</th>
+                <td>{{ indicateur.periodicite }}</td>
+            </tr>
+            <tr>
+                <th>Dateindi</th>
+                <td>{{ indicateur.dateIndi }}</td>
+            </tr>
+            <tr>
+                <th>Actions</th>
+                <td>
+                     
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+ </div>
+             <p>
+        <a style="text-decoration: none;" href="{{ path('indicateur_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href="{{ path('indicateur_edit', { 'id': indicateur.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </p>
+{% endblock %}

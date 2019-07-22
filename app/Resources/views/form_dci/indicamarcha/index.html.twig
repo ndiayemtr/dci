@@ -1,0 +1,61 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicamarcha_index') }}"><span class="fa fa-arrow-circle-left"></span> Indicateur lié aux marchandises</a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h2 class="titrePage panel-title">La liste des indicateurs associés aux marchandises</h2>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Marchandise</th>
+                    <th>Produit lié</th>
+                    <th>Indicateur</th>
+                    <th>Date Indica.</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for indicaMarcha in indicaMarchas %}
+                    <tr>
+                        <td>{{ indicaMarcha.id }}</td>
+                        <td>{{ indicaMarcha.marchandise.libelle }}</td>
+                        <td>{{ indicaMarcha.marchandise.sousCategorieEntite.nomEntite }}</td>
+                        <td>{{ indicaMarcha.indicateur.libelle }}</td>
+                        <td>{{ indicaMarcha.indicateur.dateIndi }}</td>
+                        <td>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_show', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_edit', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_new', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+             <P>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur à une marchandise de produit ou service</a>
+            <span>&nbsp;&nbsp;</span>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_index') }}"><span class="glyphicon glyphicon-eye-open"></span> La liste des relevées à une marchandise</a>
+        </P>
+        
+        <div style="text-align: center"> 
+        <ul class="pagination">
+            {% for p in range(1, nbrTotalPages) %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ path('indicamarcha_index', {'page': p}) }}">{{ p }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}

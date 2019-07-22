@@ -1,0 +1,67 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        
+          <table class="table table-striped table-hover">
+                        <thead style="text-align: center">
+                            <tr style="text-align: center">
+                                <th style="text-align: center">reference</th>
+                                 <th style="text-align: center">libelle</th>
+                                 <th style="text-align: center">typeData</th>
+                                 <th style="text-align: center">unite</th>
+                                 <th style="text-align: center">mode</th>
+                                 <th style="text-align: center">niveau</th>
+                                 <th style="text-align: center">periodicite</th>
+                                  <th style="text-align: center">dateIndi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="cent" style="text-align: center">
+
+                            {% for indicateurMarchandise in indicateurMarchandises %}
+                                <tr> 
+                                    <td style="text-align: center"> {{ indicateurMarchandise.reference }} </td>                
+                                    <td style="text-align: center"> {{ indicateurMarchandise.libelle }} </td>
+                                    <td style="text-align: center"> {{ indicateurMarchandise.typeData }} </td>
+                                     <td style="text-align: center"> {{ indicateurMarchandise.unite }} </td>
+                                     <td style="text-align: center"> {{ indicateurMarchandise.mode }} </td>
+                                      <td style="text-align: center"> {{ indicateurMarchandise.niveau }} </td>
+                                      <td style="text-align: center"> {{ indicateurMarchandise.periodicite }} </td>
+                                      <td style="text-align: center"> {{ indicateurMarchandise.dateIndi }} </td>
+                                    <td style="text-align: center">
+                                        <a style="text-decoration: none; color: blue;" href=""><span class="fa fa-plus"> </span></a>   
+                                        <span>&nbsp;</span>| <span>&nbsp;</span>
+                                         <a style="text-decoration: none; color: blue;" href=""><span class="fa fa-eye"> </span></a>
+                                    </td>
+                                    
+
+                                </tr>
+                            {%endfor%}
+
+                    </tbody>
+                    </table>
+        
+    </div>
+
+    <div class="row">
+        
+        <div class="col-md-12 text-center">                                
+            <div> 
+                <ul class="pagination">
+                    {% for p in range(1, nbrTotalPages) %}
+                        <li{% if p == page %} class="active"{% endif %}>
+                            <a href="{{ path('utilisateur_produits', {'page': p}) }}">{{ p }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                
+            </div>  
+                <P style="text-align: center">
+                
+                <span class="fa fa-plus"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_entite') }}">Nouveau produits</a></span>
+                <span>&nbsp;</span>
+                <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_categorie_entite') }}">Annuler et Retour</a></span>
+            </P>
+        </div>
+    </div>
+{% endblock %}

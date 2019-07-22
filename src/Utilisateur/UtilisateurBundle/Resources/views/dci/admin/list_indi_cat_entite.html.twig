@@ -1,0 +1,22 @@
+<h4 class="titrePage">Liste des indicateur associés</h4><br>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">
+<table class="table table-bordered table-striped mb-0">
+    <thead style="text-align: center">
+        <tr style="text-align: center">
+            <th style="text-align: center">nom Entite</th>
+
+        </tr>
+    </thead>
+    <tbody class="cent" style="text-align: center">
+
+        {% for listIndiCateEntite in listIndiCateEntites %}
+            <tr> 
+                <td style="text-align: center"> {{ listIndiCateEntite.indicateur.libelle }} </td>                                                
+
+            </tr>
+        {%endfor%}
+
+    </tbody>
+</table>
+        
+</div>

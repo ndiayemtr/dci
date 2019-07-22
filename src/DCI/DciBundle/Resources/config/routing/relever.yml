@@ -1,0 +1,24 @@
+relever_index:
+    path:     /
+    defaults: { _controller: "DciBundle:Relever:index" }
+    methods:  GET
+
+relever_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:Relever:show" }
+    methods:  GET
+
+relever_new:
+    path:     /{id}/new
+    defaults: { _controller: "DciBundle:Relever:new" }
+    methods:  [GET, POST]
+
+relever_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:Relever:edit" }
+    methods:  [GET, POST]
+
+relever_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:Relever:delete" }
+    methods:  DELETE

@@ -1,0 +1,120 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicateur_index') }}"><span class="fa fa-arrow-circle-left"></span> Tous les Indicateurs </a>
+            | Creation d'un indicateur
+        </p>
+    </div>
+    <div class="titrePage col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ajouter un indicateur</h3>
+            </div>
+            <div class="panel-body">
+                <form id="" name="ajout" action="{{ path('indicateur_new') }}" method="POST">
+                    <div class="col-md-5">   
+
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Reference</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="reference">
+                            </div>          
+
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Type Indicateur</label></div>
+                            <div class="col-md-7">
+                                <select id="" class="form-control" name="typeIndicateur">
+                                    <option></option>
+                                    <option>Importations</option>
+                                    <option>Production</option>
+                                    <option>Exportations</option>
+                                    <option>Consommation</option>
+                                </select>
+                            </div>          
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Categorie</label></div>
+                            <div class="col-md-7">
+                                <select id="categories" class="form-control" name="categorie">
+                                    <option></option>
+                                    <option>Accessibilité</option>
+                                    <option>Sécurité</option>
+                                    <option>Qualité</option>
+                                    <option>Environnement</option>
+                                </select>
+                            </div>           
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Sous Categorie</label></div>
+                            <div class="col-md-7">
+                                <select id="sousCategorie" class="form-control" name="sousCategorie">
+                                    <option></option>
+                                </select>
+                            </div>          
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Libelle</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="libelle">
+                            </div>
+                        </div><br><br>            
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Type de Donnée</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="typeData" class="">
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Unite</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="unite" class="">
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Mode</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="mode" class="">
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Periode</label></div>
+                            <div class="col-md-7">
+                                <input type="text" name="periodicite" class="form-control periodicite">
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5"> <label>Niveau</label></div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" name="niveau" class="">
+                            </div>
+                            <br><br><br>
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <div class="col-md-5"> <label>date Indicateur</label></div>
+                                    <div class="col-md-7">
+                                        <input type="text"  name="dateIndi" class="form-control periodicite">
+                                    </div>
+                                </div><br><br>                    
+                            </div>
+                        </div>
+
+                    </div>
+                    <input type="submit" name="submit" value="Enregistrer" class="btn btn-primary btn-group-justified" >
+
+                    <br>
+
+                    <a style="text-decoration: none;" href="{{  path('indicateur_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+

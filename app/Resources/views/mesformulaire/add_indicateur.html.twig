@@ -1,0 +1,18 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row well">
+        {{ form_start(form, {'attr': {'class': 'form-horizinal'}}) }}
+        <div>
+            {{ include('form_dci/indicateur/new.html.twig') }}<br>
+            
+        </div>
+            
+       
+        <P style="text-align: center">
+                <button class="btn btn-primary boutonCateEn">Enregistrer</button>
+               {# <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="{{path('utilisateur_list_des_marchandises_produit', { 'id' : marchandise.entite.id }) }}">Annuler et Retour</a></span>#}
+            </P>
+             {{ form_end(form) }}
+    </div>
+{% endblock %}    

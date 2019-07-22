@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            ul, #myUL {
+                list-style-type: none;
+            }
+
+            #myUL {
+                margin: 0;
+                padding: 0;
+            }
+
+            .caret {
+                cursor: pointer;
+                -webkit-user-select: none; /* Safari 3.1+ */
+                -moz-user-select: none; /* Firefox 2+ */
+                -ms-user-select: none; /* IE 10+ */
+                user-select: none;
+            }
+
+            .caret::before {
+                content: "\25B6";
+                color: black;
+                display: inline-block;
+                margin-right: 6px;
+            }
+
+            .caret-down::before {
+                -ms-transform: rotate(90deg); /* IE 9 */
+                -webkit-transform: rotate(90deg); /* Safari */
+                transform: rotate(90deg);  
+            }
+
+            .nested {
+                display: none;
+            }
+
+            .active {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Tree View</h2>
+        <p>Cliquez sur la (les) flèche (s) pour ouvrir ou fermer les branches de l’arbre.</p>
+
+        <ul id="myUL">
+            <li><span class="caret">CIS</span>
+                <ul class="nested">
+                    {% for categorieEntite in categorieEntites %}
+                        <li><span class="caret"><a style="text-decoration: none;" href="{{ path('arborescence_index', { 'id': categorieEntite.id }) }}">
+                                    <span class="fa fa-arrow-circle-left"></span> {{ categorieEntite.nomEntite }}</a></span>
+                            <ul class="nested">
+                                {% if sousCategorieEntites %}
+                                    {% for sousCategorieEntite in sousCategorieEntites %}
+                                        {% if sousCategorieEntite.sousCategorieEntite.id == categorieEntite.id %}
+                                            <li><span class="caret">{{ sousCategorieEntite.nomEntite }}</span>
+                                                <ul class="nested">
+                                                    {% if marchandises %}
+                                                        {% for marchandise in marchandises %}
+                                                            {% if marchandise.sousCategorieEntite.id == sousCategorieEntite.id %}
+                                                                <li><span class="caret">{{ marchandise.libelle }}</span>
+                                                                    <ul class="nested">
+                                                                        <li>Sencha</li>
+                                                                        <li>Gyokuro</li>
+                                                                        <li>Matcha</li>
+                                                                        <li>Pi Lo Chun</li>
+                                                                    </ul>
+                                                                </li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}    
+                                                </ul>
+                                            </li>
+                                        {% endif %}
+
+                                    {% endfor %}
+                                {% endif %}
+
+                            </ul>
+                        </li>
+                    {% endfor %}  
+                </ul>
+            </li>
+        </ul>
+
+        <script>
+            var toggler = document.getElementsByClassName("caret");
+            var i;
+
+            for (i = 0; i < toggler.length; i++) {
+                toggler[i].addEventListener("click", function () {
+                    this.parentElement.querySelector(".nested").classList.toggle("active");
+                    this.classList.toggle("caret-down");
+                });
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('relever_index') }}"><span class="fa fa-arrow-circle-left"></span> Les relevés d'indicateurs de produit ou service</a>
+            | Afficher un relevé de produit ou service
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Relevé</h3>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>#</th>
+                    <td>{{ relever.id }}</td>
+                </tr>
+                <tr>
+                    <th>Datedurelever</th>
+                    <td>{{ relever.dateDuRelever }}</td>
+                </tr>
+                <tr>
+                    <th>Quantite</th>
+                    <td>{{ relever.quantite }}</td>
+                </tr>
+                  <tr>
+                    <th class="titrePage">Produit|Service</th>
+                    <td></td>
+                </tr>
+                   <tr>
+                    <th>Type cat.</th>
+                    <td>{{ relever.indicaProdSer.categorieEntite.typeCat }}</td>
+                </tr>
+                <tr>
+                    <th>Nom entite</th>
+                    <td>{{ relever.indicaProdSer.categorieEntite.nomEntite }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a style="text-decoration: none;" href="{{ path('relever_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href="{{ path('relever_edit', { 'id': relever.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
+
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </p>
+
+{% endblock %}

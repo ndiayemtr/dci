@@ -1,0 +1,74 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicamarcha_index') }}"><span class="fa fa-arrow-circle-left"></span> Indicateur lié aux marchandises</a>
+            | Afficher un indicateur lié à une marchnandise
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Indicateur associé  à la marchandise</h3>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>#</th>
+                    <td>{{ indicaMarcha.id }}</td>
+                </tr>
+                <tr>
+                    <th>Marchandise</th>
+                    <td>{{ indicaMarcha.marchandise.libelle }}</td>
+                </tr>
+                <tr>
+                    <th class="titrePage">Indicateur</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Reference</th>
+                    <td>{{ indicaMarcha.indicateur.reference }}</td>
+                </tr>
+                <tr>
+                    <th>Libelle</th>
+                    <td>{{ indicaMarcha.indicateur.libelle }}</td>
+                </tr>
+                <tr>
+                    <th>Type de données</th>
+                    <td>{{ indicaMarcha.indicateur.typeData }}</td>
+                </tr>
+                <tr>
+                    <th>Unité</th>
+                    <td>{{ indicaMarcha.indicateur.unite }}</td>
+                </tr>
+                <tr>
+                    <th>Mode</th>
+                    <td>{{ indicaMarcha.indicateur.mode }}</td>
+                </tr>
+                <tr>
+                    <th>Niveau</th>
+                    <td>{{ indicaMarcha.indicateur.niveau }}</td>
+                </tr>
+                <tr>
+                    <th>Periodicite</th>
+                    <td>{{ indicaMarcha.indicateur.periodicite }}</td>
+                </tr>
+                <tr>
+                    <th>Date indicateur</th>
+                    <td>{{ indicaMarcha.indicateur.dateIndi }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>
+        <a style="text-decoration: none;" href="{{ path('indicamarcha_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href="{{ path('indicamarcha_edit', { 'id': indicaMarcha.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>
+        <span>&nbsp;&nbsp;</span> 
+        <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_new', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </p>
+{% endblock %}

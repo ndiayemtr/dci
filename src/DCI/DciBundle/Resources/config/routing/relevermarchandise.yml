@@ -1,0 +1,24 @@
+relevermarchandise_index:
+    path:     /
+    defaults: { _controller: "DciBundle:ReleverMarchandise:index" }
+    methods:  GET
+
+relevermarchandise_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:ReleverMarchandise:show" }
+    methods:  GET
+
+relevermarchandise_new:
+    path:     /{id}/new
+    defaults: { _controller: "DciBundle:ReleverMarchandise:new" }
+    methods:  [GET, POST]
+
+relevermarchandise_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:ReleverMarchandise:edit" }
+    methods:  [GET, POST]
+
+relevermarchandise_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:ReleverMarchandise:delete" }
+    methods:  DELETE

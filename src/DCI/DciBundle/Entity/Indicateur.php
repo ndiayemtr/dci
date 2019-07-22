@@ -24,23 +24,44 @@ class Indicateur
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255)
+     * @ORM\Column(name="reference", type="string", length=255)
      */
-    private $libelle;
+    private $reference;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="typeIndicateur", type="string", columnDefinition="enum('Importations', 'Production', 'Exportations', 'Consommation')")
+     */
+    private $typeIndicateur;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", columnDefinition="enum('Accessibilité', 'Sécurité', 'Qualité', 'Environnement')")
+     */
+    private $categorie;
+	
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sousCategorie", type="string", length=255)
+     */
+    private $sousCategorie;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="origine", type="string", length=255)
+     * @ORM\Column(name="libelle", type="string", length=255)
      */
-    private $origine;
+    private $libelle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="producteur", type="string", length=255)
+     * @ORM\Column(name="typeData", type="string", length=255)
      */
-    private $producteur;
+    private $typeData;
     
     /**
      * @var string
@@ -48,33 +69,35 @@ class Indicateur
      * @ORM\Column(name="unite", type="string", length=255)
      */
     private $unite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mode", type="string", length=255)
+     */
+    private $mode;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", columnDefinition="enum('Departemental', 'Regionale', 'Nationnal')")
+     */
+    private $niveau;     
+
     /**
      * @var string
      *
      * @ORM\Column(name="periodicite", type="string", length=255)
      */
     private $periodicite;
-
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="typeCondionnement", type="string", length=255)
+     * @ORM\Column(name="dateIndi", type="string", length=255)
      */
-    private $typeCondionnement;
+    private $dateIndi;
     
-    /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Departement", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $departement;
-    
-    /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Marchandise", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $marchandise;
-
 
     /**
      * Get id
@@ -84,6 +107,30 @@ class Indicateur
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param string $reference
+     *
+     * @return Indicateur
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
     }
 
     /**
@@ -111,51 +158,27 @@ class Indicateur
     }
 
     /**
-     * Set origine
+     * Set typeData
      *
-     * @param string $origine
+     * @param string $typeData
      *
      * @return Indicateur
      */
-    public function setOrigine($origine)
+    public function setTypeData($typeData)
     {
-        $this->origine = $origine;
+        $this->typeData = $typeData;
 
         return $this;
     }
 
     /**
-     * Get origine
+     * Get typeData
      *
      * @return string
      */
-    public function getOrigine()
+    public function getTypeData()
     {
-        return $this->origine;
-    }
-
-    /**
-     * Set producteur
-     *
-     * @param string $producteur
-     *
-     * @return Indicateur
-     */
-    public function setProducteur($producteur)
-    {
-        $this->producteur = $producteur;
-
-        return $this;
-    }
-
-    /**
-     * Get producteur
-     *
-     * @return string
-     */
-    public function getProducteur()
-    {
-        return $this->producteur;
+        return $this->typeData;
     }
 
     /**
@@ -183,6 +206,54 @@ class Indicateur
     }
 
     /**
+     * Set mode
+     *
+     * @param string $mode
+     *
+     * @return Indicateur
+     */
+    public function setMode($mode)
+    {
+        $this->mode = $mode;
+
+        return $this;
+    }
+
+    /**
+     * Get mode
+     *
+     * @return string
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return Indicateur
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+
+    /**
      * Set periodicite
      *
      * @param string $periodicite
@@ -207,74 +278,108 @@ class Indicateur
     }
 
     /**
-     * Set typeCondionnement
+     * Set dateIndi
      *
-     * @param string $typeCondionnement
+     * @param string $dateIndi
      *
      * @return Indicateur
      */
-    public function setTypeCondionnement($typeCondionnement)
+    public function setDateIndi($dateIndi)
     {
-        $this->typeCondionnement = $typeCondionnement;
+        $this->dateIndi = $dateIndi;
 
         return $this;
     }
 
     /**
-     * Get typeCondionnement
+     * Get dateIndi
      *
      * @return string
      */
-    public function getTypeCondionnement()
+    public function getDateIndi()
     {
-        return $this->typeCondionnement;
+        return $this->dateIndi;
+    }
+    
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+    
+        return $this->getLibelle();
+      
     }
 
     /**
-     * Set departement
+     * Set typeIndicateur
      *
-     * @param \DCI\DciBundle\Entity\Departement $departement
+     * @param string $typeIndicateur
      *
      * @return Indicateur
      */
-    public function setDepartement(\DCI\DciBundle\Entity\Departement $departement)
+    public function setTypeIndicateur($typeIndicateur)
     {
-        $this->departement = $departement;
+        $this->typeIndicateur = $typeIndicateur;
 
         return $this;
     }
 
     /**
-     * Get departement
+     * Get typeIndicateur
      *
-     * @return \DCI\DciBundle\Entity\Departement
+     * @return string
      */
-    public function getDepartement()
+    public function getTypeIndicateur()
     {
-        return $this->departement;
+        return $this->typeIndicateur;
     }
 
     /**
-     * Set marchandise
+     * Set categorie
      *
-     * @param \DCI\DciBundle\Entity\Marchandise $marchandise
+     * @param string $categorie
      *
      * @return Indicateur
      */
-    public function setMarchandise(\DCI\DciBundle\Entity\Marchandise $marchandise)
+    public function setCategorie($categorie)
     {
-        $this->marchandise = $marchandise;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get marchandise
+     * Get categorie
      *
-     * @return \DCI\DciBundle\Entity\Marchandise
+     * @return string
      */
-    public function getMarchandise()
+    public function getCategorie()
     {
-        return $this->marchandise;
+        return $this->categorie;
+    }
+
+    /**
+     * Set sousCategorie
+     *
+     * @param string $sousCategorie
+     *
+     * @return Indicateur
+     */
+    public function setSousCategorie($sousCategorie)
+    {
+        $this->sousCategorie = $sousCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get sousCategorie
+     *
+     * @return string
+     */
+    public function getSousCategorie()
+    {
+        return $this->sousCategorie;
     }
 }

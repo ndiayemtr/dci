@@ -7,14 +7,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 use DCI\DciBundle\Entity\Entite;
 use DCI\DciBundle\Entity\CategorieEntite;
+use DCI\DciBundle\Entity\SousCategorieEntite;
 use DCI\DciBundle\Entity\AttributEntite;
 use DCI\DciBundle\Entity\Marchandise;
 use DCI\DciBundle\Entity\AttributMarchandise;
 use DCI\DciBundle\Entity\Indicateur;
 use DCI\DciBundle\Entity\Relever;
+use DCI\DciBundle\Entity\IndicaProdSer;
 
 use DCI\DciBundle\Form\EntiteType;
 use DCI\DciBundle\Form\CategorieEntiteType;
+use DCI\DciBundle\Form\SousCategorieEntiteType;
 use DCI\DciBundle\Form\AttributEntiteType;
 use DCI\DciBundle\Form\MarchandiseType;
 use DCI\DciBundle\Form\AttributMarchandiseType;
@@ -70,6 +73,47 @@ class AdminController extends Controller {
         return $this->render('UtilisateurBundle:dci/admin:add_categorie_entite.html.twig',  array(
                     'form' => $form->createView(),
         ));
+    }
+    
+        public function addSousCategorieEtititeAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $sousCatEntite = new SousCategorieEntite();
+        $form = $this->createForm(SousCategorieEntiteType::class, $sousCatEntite);
+        $form->handleRequest($request);
+        
+         if ($request->isMethod('POST') && $form->isValid()) {
+            $em->persist($sousCatEntite);
+            $em->flush();
+            
+             return $this->redirectToRoute('utilisateur_sous_cat_entite');
+                        
+         }
+        return $this->render('UtilisateurBundle:dci/admin:add_sous_cat_entite.html.twig',  array(
+                    'form' => $form->createView(),
+        ));
+    }
+        public function indicaProdSerAction(Request $request, CategorieEntite $categorieEntite){
+            $em = $this->getDoctrine()->getManager();
+            $IndicaProdSer = new IndicaProdSer();
+            $indicateur = new Indicateur();
+            $form = $this->createForm(IndicateurType::class, $indicateur);
+            $form->handleRequest($request);
+        
+         if ($request->isMethod('POST') && $form->isValid()) {
+            $IndicaProdSer->setCategorieEntite($categorieEntite);
+            $IndicaProdSer->setIndicateur($indicateur);
+            $em->persist($indicateur);
+            $em->persist($IndicaProdSer);
+            $em->flush();          
+            
+             return $this->redirectToRoute('utilisateur_list_sous_cat_entite', array('id' => $categorieEntite->getId()));                       
+         }
+ 
+             return $this->render('UtilisateurBundle:dci/collecteur:add_indicateur.html.twig',  array(
+                    'form' => $form->createView(),
+                    'id' => $categorieEntite->getId(),
+        ));
+                                
     }
     
     /**
@@ -160,7 +204,7 @@ class AdminController extends Controller {
          if ($request->isMethod('POST') && $form->isValid()) {
              
 
-             $indicateur->setMarchandise($marchandise);
+             //$indicateur->setMarchandise($marchandise);
              $em->persist($indicateur);
              $em->flush();
             
@@ -216,7 +260,7 @@ class AdminController extends Controller {
         $nbrAttPage = 4;
         
          $em = $this->getDoctrine()->getManager();
-        $entiteProduit = $em->getRepository('DciBundle:Entite')->allProduits($page, $nbrAttPage);
+        $entiteProduit = $em->getRepository('DciBundle:CategorieEntite')->allCategories($page, $nbrAttPage);
         
         // On calcule le nombre total de pages grâce au count($attestations) qui retourne
          //  le nombre total d'annonces
@@ -262,6 +306,25 @@ class AdminController extends Controller {
     }
     
     /**
+     * La liste des sous cat d'une entite
+     * 
+     * @param type $id
+     * @return type
+     */
+    public function listSousCatEntiteAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $list_sousCatEntite = $em->getRepository('DciBundle:SousCategorieEntite')->findBy(array('sousCategorieEntite' => $id));
+        $catEntite = $em->getRepository('DciBundle:CategorieEntite')->find($id);
+        
+        return $this->render('UtilisateurBundle:dci/admin:list_sousCatEntite.html.twig', array(
+                    'list_sousCatEntites' => $list_sousCatEntite,
+                    'nomCatEntite' => $catEntite->getNomEntite(),
+                    'id' => $id,
+        ));
+    }
+    
+    /**
      * liste des indicateurs d'une marchandise
      * 
      * @param type $id
@@ -297,6 +360,31 @@ class AdminController extends Controller {
                     'nbrTotalPages' => $nbrTotalPages,
         ));
     }
+    public function indicateurAllAction($page){
+         if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+         //je fixe je nombre d'annoce par page
+        $nbrAttPage = 4;
+        
+         $em = $this->getDoctrine()->getManager();
+        $indicateurMarchandises = $em->getRepository('DciBundle:Indicateur')->indicateurAll($page, $nbrAttPage);
+        
+          // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($indicateurMarchandises) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page" . $page . " n'existe pas.");
+        }
+        return $this->render('UtilisateurBundle:dci/admin:all_indicateur.html.twig', array(
+                    'indicateurMarchandises' => $indicateurMarchandises,
+                    'page' => $page,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
     
     /**
      * la liste des categories
@@ -311,5 +399,15 @@ class AdminController extends Controller {
         return $this->render('UtilisateurBundle:dci/admin:categories.html.twig', array(
                     'categories' => $categories,
         ));
+    }
+    
+    public function litsIndiCatEntiteAction(CategorieEntite $cateEntite){
+         $em = $this->getDoctrine()->getManager();
+        $listIndiCateEntite = $em->getRepository('DciBundle:IndicaProdSer')->findBy(array('categorieEntite' => $cateEntite->getId()));
+ 
+        return $this->render('UtilisateurBundle:dci/admin:list_indi_cat_entite.html.twig', array(
+                    'listIndiCateEntites' => $listIndiCateEntite,
+        ));
+        
     }
 }

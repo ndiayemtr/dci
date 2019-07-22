@@ -1,0 +1,33 @@
+souscategorieentite_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:SousCategorieEntite:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+souscategorieentite_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:SousCategorieEntite:show" }
+    methods:  GET
+
+souscategorieentite_addSousCateD1Produit:
+    path:     /addSousCateD1Produit/{id}
+    defaults: { _controller: "DciBundle:SousCategorieEntite:addSousCateD1ProduitAction" }
+    methods:  [GET, POST]
+    
+souscategorieentite_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:SousCategorieEntite:new" }
+    methods:  [GET, POST]
+
+souscategorieentite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:SousCategorieEntite:edit" }
+    methods:  [GET, POST]
+
+souscategorieentite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:SousCategorieEntite:delete" }
+    methods:  DELETE

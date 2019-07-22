@@ -1,0 +1,45 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+      <div class="row">
+         <p>
+            <a style="text-decoration: none;" href="{{  path('relevermarchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Les relevés liés aux Marchandise</a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Liste des relevés de marchandises</h3>
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Quantite</th>
+                <th>Indicateur associé</th>
+                <th>Date du relevé</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for releverMarchandise in releverMarchandises %}
+            <tr>
+                <td>{{ releverMarchandise.id }}</td>
+                <td>{{ releverMarchandise.quantite }}</td>
+                <td>{{ releverMarchandise.indicaMarcha.indicateur.libelle }}</td>
+                <td>{% if releverMarchandise.dateDuRelever %}{{ releverMarchandise.dateDuRelever|date('Y-m-d H:i:s') }}{% endif %}</td>
+                  <td>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_show', { 'id': releverMarchandise.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_edit', { 'id': releverMarchandise.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
+                        </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+         </div>
+        <P>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_index') }}"><span class="fa fa-arrow-circle-left"></span> La liste indicateurs de marchandise des produits ou services</a>
+        </P>
+
+{% endblock %}

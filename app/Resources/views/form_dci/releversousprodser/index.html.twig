@@ -1,0 +1,47 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('relevermarchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Les relevés liés aux sous categorie</a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Les relevés liés aux sous categorie</h3>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Quantite</th>
+                    <th>Indicateur associé</th>
+                    <th>Date du relever</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for releverSousProdSer in releverSousProdSers %}
+                    <tr>
+                        <td><a href="{{ path('releversousprodser_show', { 'id': releverSousProdSer.id }) }}">{{ releverSousProdSer.id }}</a></td>
+                        <td>{{ releverSousProdSer.quantite }}</td>
+                        <td>{{ releverSousProdSer.indicaSousProdSer.indicateur.libelle }}</td>
+                        <td>{% if releverSousProdSer.dateDuRelever %}{{ releverSousProdSer.dateDuRelever|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('releversousprodser_show', { 'id': releverSousProdSer.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('releversousprodser_edit', { 'id': releverSousProdSer.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <P>
+        <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_index') }}"><span class="fa fa-arrow-circle-left"></span> La liste indicateurs de sous categories de produits ou services</a>
+    
+    </P>
+
+
+{% endblock %}

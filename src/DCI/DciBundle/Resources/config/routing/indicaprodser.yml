@@ -1,0 +1,42 @@
+indicaprodser_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:IndicaProdSer:index
+        page:        1 
+    requirements:
+        page: \d*
+    methods:  GET
+    
+indicaprodser_indicatD1ProdSer:
+    path:     /indicat-dun-prod-ser/{id}/{page}
+    defaults: 
+        _controller: DciBundle:IndicaProdSer:indicatD1ProdSer
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+indicaprodser_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:IndicaProdSer:show" }
+    methods:  GET
+
+indicaprodser_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:IndicaProdSer:new" }
+    methods:  [GET, POST]
+    
+indicaprodser_add:
+    path:     /{id}/add
+    defaults: { _controller: "DciBundle:IndicaProdSer:addIndicaProdSer" }
+    methods:  [GET, POST]
+
+indicaprodser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:IndicaProdSer:edit" }
+    methods:  [GET, POST]
+
+indicaprodser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:IndicaProdSer:delete" }
+    methods:  DELETE

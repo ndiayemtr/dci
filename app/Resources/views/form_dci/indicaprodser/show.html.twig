@@ -1,0 +1,76 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicaprodser_index') }}"><span class="fa fa-arrow-circle-left"></span> Indicateur lié aux produit ou service</a>
+            | Afficher un indicateur lié avec un produit ou service
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Indicateur associé au produit/service</h3>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>#</th>
+                    <td>{{ indicaProdSer.id }}</td>
+                </tr>
+                <tr>
+                    <th>Produit/Service</th>
+                    <td>{{ indicaProdSer.categorieEntite.nomEntite }}</td>
+                </tr>
+                <tr>
+                    <th class="titrePage">Indicateur</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Reference</th>
+                    <td>{{ indicaProdSer.indicateur.reference }}</td>
+                </tr>
+                <tr>
+                    <th>Libelle</th>
+                    <td>{{ indicaProdSer.indicateur.libelle }}</td>
+                </tr>
+                <tr>
+                    <th>Type de données</th>
+                    <td>{{ indicaProdSer.indicateur.typeData }}</td>
+                </tr>
+                <tr>
+                    <th>Unité</th>
+                    <td>{{ indicaProdSer.indicateur.unite }}</td>
+                </tr>
+                <tr>
+                    <th>Mode</th>
+                    <td>{{ indicaProdSer.indicateur.mode }}</td>
+                </tr>
+                <tr>
+                    <th>Niveau</th>
+                    <td>{{ indicaProdSer.indicateur.niveau }}</td>
+                </tr>
+                <tr>
+                    <th>Periodicite</th>
+                    <td>{{ indicaProdSer.indicateur.periodicite }}</td>
+                </tr>
+                <tr>
+                    <th>Date indicateur</th>
+                    <td>{{ indicaProdSer.indicateur.dateIndi }}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+    <p>
+        <a style="text-decoration: none;" href="{{ path('indicaprodser_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href="{{ path('indicaprodser_edit', { 'id': indicaProdSer.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
+        <span>&nbsp;&nbsp;</span>
+        <a style="text-decoration: none; color: #003eff" href="{{ path('relever_new', { 'id': indicaProdSer.id })  }}"> <span class="glyphicon glyphicon-list"></span> Faire un relevé</a>&nbsp;&nbsp;&nbsp;
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </p>
+{% endblock %}

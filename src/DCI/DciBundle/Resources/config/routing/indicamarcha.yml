@@ -1,0 +1,42 @@
+indicamarcha_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:IndicaMarcha:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+    
+indicamarcha_indicatD1Marcha:
+    path:     /indicat-dun-marcha/{id}/{page}
+    defaults: 
+        _controller: DciBundle:IndicaMarcha:indicatD1Marcha
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+indicamarcha_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:IndicaMarcha:show" }
+    methods:  GET
+
+indicamarcha_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:IndicaMarcha:new" }
+    methods:  [GET, POST]
+    
+indicamarcha_add:
+    path:     /{id}/add
+    defaults: { _controller: "DciBundle:IndicaMarcha:addIndicaMarcha" }
+    methods:  [GET, POST]
+
+indicamarcha_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:IndicaMarcha:edit" }
+    methods:  [GET, POST]
+
+indicamarcha_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:IndicaMarcha:delete" }
+    methods:  DELETE

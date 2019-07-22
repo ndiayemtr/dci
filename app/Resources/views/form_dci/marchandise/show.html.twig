@@ -1,0 +1,60 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
+            | Afficher une marchandise
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Indicateur associé à une machandise</h3>
+        </div>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ marchandise.id }}</td>
+                </tr>
+                 <tr>
+                    <th>Categorie</th>
+                    <td class="colorSousTitre">{{ marchandise.sousCategorieEntite.nomEntite }}</td>
+                </tr>
+                <tr>
+                    <th>Reference</th>
+                    <td>{{ marchandise.reference }}</td>
+                </tr>
+                <tr>
+                    <th>Stade</th>
+                    <td>{{ marchandise.stade }}</td>
+                </tr>
+                <tr>
+                    <th>Libelle</th>
+                    <td>{{ marchandise.libelle }}</td>
+                </tr>
+                <tr>
+                    <th>Origine</th>
+                    <td>{{ marchandise.origine }}</td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>{{ marchandise.dateMarchandise }}</td>
+                </tr>
+                <tr>
+                    <th>Type marchandise</th>
+                    <td>{{ marchandise.typeMarchandise }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <a style="text-decoration: none;" href="{{ path('marchandise_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href="{{ path('marchandise_edit', { 'id': marchandise.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </p>
+
+{% endblock %}

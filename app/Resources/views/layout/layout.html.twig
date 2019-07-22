@@ -26,13 +26,18 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">DCI</a>
+                    {#<a class="navbar-brand" href="{{  path('arborescence_index') }}">DCI</a>#}
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="./">Accueil</a></li>
-                        <li><a href="">Nouvelle categorie</a></li>
-                        <li><a href="">Nouveau produit</a></li>
+                    <ul id="menu" class="nav navbar-nav">
+                        <li><a href="{{ path('arborescence_index') }}" class= 'btn1'>DCI</a></li>
+                        <li><a href="{{ path('categorieentite_index') }}" class= 'btn1'>Categorie entité</a></li>
+                        <li><a href="{{ path('souscategorieentite_index') }}" class= 'btn1'>Sous categorie</a></li>
+                        <li><a href="{{ path('marchandise_index') }}" class= 'btn1'>Marchandise</a></li>
+                        <li><a href="{{ path('indicateur_index') }}" class= 'btn1'>Indicateur</a></li>
+                        <li><a href="{{ path('indicamarcha_index') }}" class= 'btn1'>Indicateur marchandise</a></li>
+                        <li><a href="{{ path('indicaprodser_index') }}" class= 'btn1'>Indicateur poroduit|service</a></li>
+                        <li><a href="{{ path('indicasousprodser_index') }}" class= 'btn1'>Indicateur sous produit|service</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="./"> Recherche</a></li>

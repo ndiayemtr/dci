@@ -1,0 +1,42 @@
+indicasousprodser_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:IndicaSousProdSer:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+    
+indicaprodser_indicatD1SousCateg:
+    path:     /indicat-Dun-sous-categ/{id}/{page}
+    defaults: 
+        _controller: DciBundle:IndicaSousProdSer:indicatD1SousCateg
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+indicasousprodser_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:IndicaSousProdSer:show" }
+    methods:  GET
+
+indicasousprodser_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:IndicaSousProdSer:new" }
+    methods:  [GET, POST]
+    
+indicasousprodser_add:
+    path:     /{id}/add
+    defaults: { _controller: "DciBundle:IndicaSousProdSer:addIndicaSousProdSer" }
+    methods:  [GET, POST]
+
+indicasousprodser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:IndicaSousProdSer:edit" }
+    methods:  [GET, POST]
+
+indicasousprodser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:IndicaSousProdSer:delete" }
+    methods:  DELETE

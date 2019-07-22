@@ -12,9 +12,9 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class CategorieEntiteRepository extends \Doctrine\ORM\EntityRepository{
     
-    public function allCategories($page, $nbrAffichPage) {
-        $qb = $this->createQueryBuilder('entite')
-                ->select('entite')
+    public function allCategorieEntite($page, $nbrAffichPage) {
+        $qb = $this->createQueryBuilder('CategorieEntite')
+                ->select('CategorieEntite')
                 ->getQuery();
         $qb
                 // On définit l'annonce à partir de laquelle commencer la liste

@@ -11,6 +11,19 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  * repository methods below.
  */
 class IndicateurRepository extends \Doctrine\ORM\EntityRepository{
+    
+      public function allIndicateur($page, $nbrAffichPage) {
+        $qb = $this->createQueryBuilder(' Indicateur')
+                ->select(' Indicateur')
+                ->getQuery();
+        $qb
+                // On définit l'annonce à partir de laquelle commencer la liste
+                ->setFirstResult(($page - 1) * $nbrAffichPage)
+                // Ainsi que le nombre d'annonce à afficher sur une page
+                ->setMaxResults($nbrAffichPage);
+
+        return new Paginator($qb, true);
+    }
       
     public function indicateurDunMarch($page, $nbrAffichPage, $idMarch) {
         $qb = $this->createQueryBuilder('indi')
@@ -28,8 +41,20 @@ class IndicateurRepository extends \Doctrine\ORM\EntityRepository{
             
             return new Paginator($qb, true);
     }
+    public function indicateurAll($page, $nbrAffichPage) {
+        $qb = $this->createQueryBuilder('indi')
+                ->select('indi')
+                ->orderBy('indi.id', 'DESC')
+                ->getQuery();
+        $qb
+           // On définit l'annonce à partir de laquelle commencer la liste
+           ->setFirstResult(($page-1) * $nbrAffichPage)
+           // Ainsi que le nombre d'annonce à afficher sur une page
+           ->setMaxResults($nbrAffichPage) ;
+            
+            return new Paginator($qb, true);
+    }
     
-
         public function lesIndiCaDepart($page, $nbrAffichPage, $idDepartema){
         
         $qb = $this->createQueryBuilder('indicat')

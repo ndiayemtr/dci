@@ -1,0 +1,28 @@
+categorieentite_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:CategorieEntite:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+categorieentite_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:CategorieEntite:show" }
+    methods:  GET
+
+categorieentite_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:CategorieEntite:new" }
+    methods:  [GET, POST]
+
+categorieentite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:CategorieEntite:edit" }
+    methods:  [GET, POST]
+
+categorieentite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:CategorieEntite:delete" }
+    methods:  DELETE

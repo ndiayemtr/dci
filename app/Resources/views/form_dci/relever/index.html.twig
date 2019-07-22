@@ -1,0 +1,45 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('relever_index') }}"><span class="fa fa-arrow-circle-left"></span> Les relevés d'indicateurs de produit ou service </a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">la liste des relevés</h3>
+        </div>
+
+        <table class="table">
+            <thead>
+                  <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>Indicateur associé</th>
+                <th>Date du relevé</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for relever in relevers %}
+                    <tr>
+                        <td>{{ relever.id }}</td>
+                        <td>{{ relever.quantite }}</td>
+                        <td>{{ relever.indicaProdSer.indicateur.libelle }}</td>
+                         <td>{{ relever.dateDuRelever }}</td>
+                        <td>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relever_show', { 'id': relever.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relever_edit', { 'id': relever.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>      
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+      <P>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('indicaprodser_index') }}"><span class="fa fa-arrow-circle-left"></span> La liste indicateurs de produit ou service</a>
+        </P>
+
+{% endblock %}

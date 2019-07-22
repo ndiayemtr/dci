@@ -1,0 +1,33 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('indicamarcha_index') }}"><span class="fa fa-arrow-circle-left"></span> Indicateur lié aux marchandises</a>
+            | Modifier un indicateur lié à une marchnandise
+        </p>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Modification d'un indicateur à une marchandise</h3>
+            </div>
+            <div class="panel-body">
+                {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Valider" class="btn btn-primary btn-group-justified" />
+            {{ form_end(edit_form) }}
+            <br>
+  
+            <a style="text-decoration: none;" href="{{  path('indicamarcha_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+
+            </div>
+         
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+
+
+
+

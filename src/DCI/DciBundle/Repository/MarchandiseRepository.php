@@ -12,6 +12,19 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class MarchandiseRepository extends \Doctrine\ORM\EntityRepository {
     
+     public function allMarchandise($page, $nbrAffichPage) {
+        $qb = $this->createQueryBuilder('Marchandise')
+                ->select('Marchandise')
+                ->getQuery();
+        $qb
+                // On définit l'annonce à partir de laquelle commencer la liste
+                ->setFirstResult(($page - 1) * $nbrAffichPage)
+                // Ainsi que le nombre d'annonce à afficher sur une page
+                ->setMaxResults($nbrAffichPage);
+
+        return new Paginator($qb, true);
+    }
+    
        public function marchtDunProduit($idproSer) {
         $qb = $this->createQueryBuilder('march')
                 ->select('march')

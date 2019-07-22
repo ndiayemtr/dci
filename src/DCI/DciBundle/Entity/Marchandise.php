@@ -38,30 +38,23 @@ class Marchandise
     /**
      * @var string
      *
+     * @ORM\Column(name="libelle", type="string", length=255)
+     */
+    private $libelle;
+    
+    /**
+     * @var string
+     *
      * @ORM\Column(name="origine", type="string", length=255)
      */
     private $origine;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sousCategorie", type="string", length=255)
-     */
-    private $sousCategorie;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="natuteDuMarcha", type="string", length=255)
+     * @ORM\Column(name="dateMarchandise", type="string", length=255)
      */
-    private $natuteDuMarcha;
-    
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nonMarchandise", type="string", length=255)
-     */
-    private $nonMarchandise;
+    private $dateMarchandise;
     
     /**
      * @var string
@@ -69,12 +62,19 @@ class Marchandise
      * @ORM\Column(name="typeMarchandise", type="string", length=255)
      */
     private $typeMarchandise;
+    
    
     /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Entite", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\SousCategorieEntite", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $entite;
+    private $sousCategorieEntite;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Departement", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $departement; 
 
 
     /**
@@ -86,6 +86,13 @@ class Marchandise
     {
         return $this->id;
     }
+    
+    public function __toString(){
+    
+        return $this->getLibelle();
+      
+    }
+
 
     /**
      * Set reference
@@ -136,27 +143,27 @@ class Marchandise
     }
 
     /**
-     * Set sousCategorie
+     * Set libelle
      *
-     * @param string $sousCategorie
+     * @param string $libelle
      *
      * @return Marchandise
      */
-    public function setSousCategorie($sousCategorie)
+    public function setLibelle($libelle)
     {
-        $this->sousCategorie = $sousCategorie;
+        $this->libelle = $libelle;
 
         return $this;
     }
 
     /**
-     * Get sousCategorie
+     * Get libelle
      *
      * @return string
      */
-    public function getSousCategorie()
+    public function getLibelle()
     {
-        return $this->sousCategorie;
+        return $this->libelle;
     }
 
     /**
@@ -184,182 +191,27 @@ class Marchandise
     }
 
     /**
-     * Set producteur
+     * Set dateMarchandise
      *
-     * @param string $producteur
+     * @param string $dateMarchandise
      *
      * @return Marchandise
      */
-    public function setProducteur($producteur)
+    public function setDateMarchandise($dateMarchandise)
     {
-        $this->producteur = $producteur;
+        $this->dateMarchandise = $dateMarchandise;
 
         return $this;
     }
 
     /**
-     * Get producteur
+     * Get dateMarchandise
      *
      * @return string
      */
-    public function getProducteur()
+    public function getDateMarchandise()
     {
-        return $this->producteur;
-    }
-
-    /**
-     * Set typeCondionnement
-     *
-     * @param string $typeCondionnement
-     *
-     * @return Marchandise
-     */
-    public function setTypeCondionnement($typeCondionnement)
-    {
-        $this->typeCondionnement = $typeCondionnement;
-
-        return $this;
-    }
-
-    /**
-     * Get typeCondionnement
-     *
-     * @return string
-     */
-    public function getTypeCondionnement()
-    {
-        return $this->typeCondionnement;
-    }
-
-    /**
-     * Set unite
-     *
-     * @param string $unite
-     *
-     * @return Marchandise
-     */
-    public function setUnite($unite)
-    {
-        $this->unite = $unite;
-
-        return $this;
-    }
-
-    /**
-     * Get unite
-     *
-     * @return string
-     */
-    public function getUnite()
-    {
-        return $this->unite;
-    }
-
-    /**
-     * Set quantite
-     *
-     * @param string $quantite
-     *
-     * @return Marchandise
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    /**
-     * Get quantite
-     *
-     * @return string
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    /**
-     * Set produitService
-     *
-     * @param \DCI\DciBundle\Entity\ProduitService $produitService
-     *
-     * @return Marchandise
-     
-    public function setProduitService(\DCI\DciBundle\Entity\ProduitService $produitService)
-    {
-        $this->produitService = $produitService;
-
-        return $this;
-    }
-
-    /**
-     * Get produitService
-     *
-     * @return \DCI\DciBundle\Entity\ProduitService
-     
-    public function getProduitService()
-    {
-        return $this->produitService;
-    }
-    */
-    
-    /**
-     * Generates the magic method
-     * 
-     */
-    public function __toString(){
-    
-        return $this->getNonMarchandise();
-      
-    }
-
-    /**
-     * Set natuteDuMarcha
-     *
-     * @param string $natuteDuMarcha
-     *
-     * @return Marchandise
-     */
-    public function setNatuteDuMarcha($natuteDuMarcha)
-    {
-        $this->natuteDuMarcha = $natuteDuMarcha;
-
-        return $this;
-    }
-
-    /**
-     * Get natuteDuMarcha
-     *
-     * @return string
-     */
-    public function getNatuteDuMarcha()
-    {
-        return $this->natuteDuMarcha;
-    }
-
-    /**
-     * Set nonMarchandise
-     *
-     * @param string $nonMarchandise
-     *
-     * @return Marchandise
-     */
-    public function setNonMarchandise($nonMarchandise)
-    {
-        $this->nonMarchandise = $nonMarchandise;
-
-        return $this;
-    }
-
-    /**
-     * Get nonMarchandise
-     *
-     * @return string
-     */
-    public function getNonMarchandise()
-    {
-        return $this->nonMarchandise;
+        return $this->dateMarchandise;
     }
 
     /**
@@ -387,26 +239,50 @@ class Marchandise
     }
 
     /**
-     * Set entite
+     * Set sousCategorieEntite
      *
-     * @param \DCI\DciBundle\Entity\Entite $entite
+     * @param \DCI\DciBundle\Entity\SousCategorieEntite $sousCategorieEntite
      *
      * @return Marchandise
      */
-    public function setEntite(\DCI\DciBundle\Entity\Entite $entite)
+    public function setSousCategorieEntite(\DCI\DciBundle\Entity\SousCategorieEntite $sousCategorieEntite)
     {
-        $this->entite = $entite;
+        $this->sousCategorieEntite = $sousCategorieEntite;
 
         return $this;
     }
 
     /**
-     * Get entite
+     * Get sousCategorieEntite
      *
-     * @return \DCI\DciBundle\Entity\Entite
+     * @return \DCI\DciBundle\Entity\SousCategorieEntite
      */
-    public function getEntite()
+    public function getSousCategorieEntite()
     {
-        return $this->entite;
+        return $this->sousCategorieEntite;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \DCI\DciBundle\Entity\Departement $departement
+     *
+     * @return Marchandise
+     */
+    public function setDepartement(\DCI\DciBundle\Entity\Departement $departement)
+    {
+        $this->departement = $departement;
+
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \DCI\DciBundle\Entity\Departement
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 }

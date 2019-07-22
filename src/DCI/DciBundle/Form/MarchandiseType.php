@@ -24,12 +24,12 @@ class MarchandiseType extends AbstractType {
                 'Local' => 'Local',
                 'Import' => 'Import',
             ],
-        ])->add('sousCategorie')->add('natuteDuMarcha')->add('nonMarchandise')->add('typeMarchandise', ChoiceType::class, [
+        ])->add('libelle')->add('dateMarchandise')->add('typeMarchandise', ChoiceType::class, [
             'choices' => [
                 'Conditionnement' => 'Conditionnement',
                 'Emballage' => 'Emballage',
             ],
-        ]);
+        ])->add('departement')->add('sousCategorieEntite');
     }
 
     /**

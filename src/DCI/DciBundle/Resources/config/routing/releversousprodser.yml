@@ -1,0 +1,24 @@
+releversousprodser_index:
+    path:     /
+    defaults: { _controller: "DciBundle:ReleverSousProdSer:index" }
+    methods:  GET
+
+releversousprodser_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:ReleverSousProdSer:show" }
+    methods:  GET
+
+releversousprodser_new:
+    path:     /{id}/new
+    defaults: { _controller: "DciBundle:ReleverSousProdSer:new" }
+    methods:  [GET, POST]
+
+releversousprodser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:ReleverSousProdSer:edit" }
+    methods:  [GET, POST]
+
+releversousprodser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:ReleverSousProdSer:delete" }
+    methods:  DELETE

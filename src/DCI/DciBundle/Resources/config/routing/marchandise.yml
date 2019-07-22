@@ -1,0 +1,33 @@
+marchandise_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:Marchandise:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+marchandise_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:Marchandise:show" }
+    methods:  GET
+
+marchandise_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:Marchandise:new" }
+    methods:  [GET, POST]
+    
+marchandise_add:
+    path:     /{id}/add
+    defaults: { _controller: "DciBundle:Marchandise:addMarchaD1SousCate" }
+    methods:  [GET, POST]
+
+marchandise_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:Marchandise:edit" }
+    methods:  [GET, POST]
+
+marchandise_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:Marchandise:delete" }
+    methods:  DELETE

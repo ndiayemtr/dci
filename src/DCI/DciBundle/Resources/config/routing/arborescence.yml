@@ -1,0 +1,24 @@
+arborescence_index:
+    path:     /
+    defaults: { _controller: "DciBundle:Arborescence:index" }
+    methods:  GET
+
+arborescence_arborescence2:
+    path:     /arborescence2
+    defaults: { _controller: "DciBundle:Arborescence:listSousCategDunProd" }
+    methods:  GET
+
+arborescence_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:CategorieEntite:new" }
+    methods:  [GET, POST]
+
+arborescence_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:CategorieEntite:edit" }
+    methods:  [GET, POST]
+
+arborescence_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:CategorieEntite:delete" }
+    methods:  DELETE

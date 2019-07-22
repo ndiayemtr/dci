@@ -1,0 +1,33 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+    </div>
+
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-8">
+                <h4 style="color: #0000F0">Nouvelle Sous-Categorie</h4><br>
+                <div class="form-group">
+                    <div class="col-md-4">{{ form_label(form.nomEntite, "Nom entité ") }}</div>
+                    <div class="col-md-6">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.nomEntite) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.nomEntite, {'attr': {'class': 'form-control', 'placeholder':'ex : Légumes'}}) }}
+                    </div>          
+                </div><br><br>
+                <div class="form-group">
+                    <div class="col-md-4">{{ form_label(form.sousCategorieEntite, "Sous categorie Entite") }}</div>
+                    <div class="col-md-6">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.sousCategorieEntite) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(form.sousCategorieEntite, {'attr': {'class': 'form-control'}}) }}
+                    </div>          
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div><!-- box box-primary-->

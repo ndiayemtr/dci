@@ -1,0 +1,51 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('relever_index') }}"><span class="fa fa-arrow-circle-left"></span> Les relevés d'indicateurs des entités de categories </a>
+            | Modifier un relevé d'entité de categorie
+        </p>
+    </div>
+    <div class="col-md-offset-3 col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Modifier un relevé d'entité de categorie </h3>
+            </div>
+            <div class="panel-body">
+                {{ form_start(edit_form) }}
+                   <div class="form-group">
+                    <div class="col-md-5">{{ form_label(edit_form.quantite, "Quantite") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(edit_form.quantite) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(edit_form.quantite, {'attr': {'class': 'form-control', 'placeholder':'ex:50KG'}}) }}
+                    </div>          
+
+                </div><br><br>
+
+                <div class="form-group">
+                    <div class="col-md-5">{{ form_label(edit_form.dateDuRelever, "Date du relevé") }}</div>
+                    <div class="col-md-7">
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(edit_form.dateDuRelever) }}
+                        {# Génération de l'input. #}
+                        {{ form_widget(edit_form.dateDuRelever, {'attr': {'class': 'form-control, periodicite', 'placeholder':'Clic pour choisir une date'}}) }}
+                    </div>
+                </div><br><br>
+            <input type="submit" value="Enregistrer" class="btn btn-primary btn-group-justified" />
+            {{ form_end(edit_form) }}
+            <br>
+  
+            <a style="text-decoration: none;" href="{{  path('relever_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+               {{ form_start(delete_form) }}
+        <input type="submit" value="Delete"  class="btn btn-danger">
+        {{ form_end(delete_form) }}
+            </div>
+         
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+

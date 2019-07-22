@@ -36,10 +36,10 @@ class Relever
     private $quantite;
     
     /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Indicateur", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\IndicaProdSer", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $indicateur;
+    private $indicaProdSer;
 
 
     /**
@@ -101,26 +101,26 @@ class Relever
     }
 
     /**
-     * Set indicateur
+     * Set indicaProdSer
      *
-     * @param \DCI\DciBundle\Entity\Indicateur $indicateur
+     * @param \DCI\DciBundle\Entity\IndicaProdSer $indicaProdSer
      *
      * @return Relever
      */
-    public function setIndicateur(\DCI\DciBundle\Entity\Indicateur $indicateur)
+    public function setIndicaProdSer(\DCI\DciBundle\Entity\IndicaProdSer $indicaProdSer)
     {
-        $this->indicateur = $indicateur;
+        $this->indicaProdSer = $indicaProdSer;
 
         return $this;
     }
 
     /**
-     * Get indicateur
+     * Get indicaProdSer
      *
-     * @return \DCI\DciBundle\Entity\Indicateur
+     * @return \DCI\DciBundle\Entity\IndicaProdSer
      */
-    public function getIndicateur()
+    public function getIndicaProdSer()
     {
-        return $this->indicateur;
+        return $this->indicaProdSer;
     }
 }

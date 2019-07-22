@@ -1,0 +1,50 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-6">
+            <h4 class="titrePage">Liste des sous entités de : {{ nomCatEntite}}</h4><br>
+            <table class="table table-striped table-hover">
+                <thead style="text-align: center">
+                    <tr style="text-align: center">
+                        <th style="text-align: center">nom Entite</th>
+
+                    </tr>
+                </thead>
+                <tbody class="cent" style="text-align: center">
+
+                    {% for list_sousCatEntite in list_sousCatEntites %}
+                        <tr> 
+                            <td style="text-align: center"> {{list_sousCatEntite.nomEntite}} </td>                                                
+
+                        </tr>
+                    {%endfor%}
+
+                </tbody>
+            </table>
+        </div>
+             <div class="col-md-3">
+                 
+            {{ render(controller("UtilisateurBundle:Admin:litsIndiCatEntite", { 'id': id} )) }}
+            <P class="smsCat">
+                Veuillez cliquer une categorie pour voir ses produits
+            </P>
+        </div>
+    </div>
+                    <div class="row">
+        
+        <div class="col-md-12 text-center">                                
+            <div>   
+                <P style="text-align: center">
+                
+                <span class="fa fa-plus"> <a style="text-decoration: none; color: blue;" href="{{path('indicateur_prod_service', { 'id' : id })  }}">Créer Indicateur</a></span>
+                <span>&nbsp;</span>
+                <span class="fa fa-plus"> <a style="text-decoration: none; color: blue;" href="">Ajouter Indicateur</a></span>
+                <span>&nbsp;</span>
+                <span class="fa fa-reply"> <a style="text-decoration: none; color: blue;" href="">Annuler et Retour</a></span>
+            </P>
+        </div>
+    </div>
+
+{% endblock %}
+

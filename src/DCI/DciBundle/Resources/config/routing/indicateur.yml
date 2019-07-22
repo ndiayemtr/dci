@@ -1,0 +1,28 @@
+indicateur_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:Indicateur:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+indicateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:Indicateur:show" }
+    methods:  GET
+
+indicateur_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:Indicateur:new" }
+    methods:  [GET, POST]
+
+indicateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:Indicateur:edit" }
+    methods:  [GET, POST]
+
+indicateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:Indicateur:delete" }
+    methods:  DELETE

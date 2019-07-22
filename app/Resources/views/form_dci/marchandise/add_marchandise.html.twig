@@ -1,0 +1,106 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
+            | Ajouter une marchandise
+        </p>
+    </div>
+    <div class=" col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Nouvelle marchandise</h3>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-5">   
+                        {#<h4 style="color: #0000F0">Ajouter une nouvelle entité</h4>#}
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.reference, "Réference") }}</div>
+                            <div class="col-md-7">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.reference) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.reference, {'attr': {'class': 'form-control', 'placeholder':'UY/654'}}) }}
+                            </div>          
+
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.stade, "Stade") }}</div>
+                            <div class="col-md-7">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.stade) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.stade, {'attr': {'class': 'form-control', 'placeholder':'stade'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.origine, "Origine") }}</div>
+                            <div class="col-md-7">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.origine) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.origine, {'attr': {'class': 'form-control', 'placeholder':'origine'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.departement) }}</div>
+                            <div class="col-md-7">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.departement) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div><br><br>
+
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <div class="col-md-5"> {{ form_label(form.dateMarchandise, "Date") }}</div>
+                            <div class="col-md-7">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.dateMarchandise) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.dateMarchandise, {'attr': {'class': 'periodicite', 'placeholder':'clic pour choisir une date'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.libelle, "Libelle") }}</div>
+                            <div class="col-md-7">            
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.libelle) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.libelle, {'attr': {'class': 'form-control', 'placeholder':'Nom de la marchandise'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-5">{{ form_label(form.typeMarchandise, "Type de la marchandise") }}</div>
+                            <div class="col-md-7">            
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.typeMarchandise) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.typeMarchandise, {'attr': {'class': 'form-control', 'placeholder':'Type de marchandise'}}) }}
+                            </div>
+                        </div><br><br>
+
+                    </div>
+
+                </div>
+
+                <input type="submit" value="Enregistrer" class="btn btn-primary btn-group-justified" />
+                {{ form_end(form) }}
+                <br>
+
+                <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+                <br><br>
+            </div>
+
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+
+
+
