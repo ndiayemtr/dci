@@ -43,10 +43,34 @@
                                                                                         <span>&nbsp;&nbsp;</span>
                                                                                         <a title="Les indicateur liés a la marchandise" style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_indicatD1Marcha', { 'id': marchandise.id }) }}" target="_blank"><span class="fa fa-bars" aria-hidden="true"></span> </a>
                                                                                     </li> 
+                                                                                    <ul>
+                                                                                        <li>Consommateur
+                                                                                            <ul>
+                                                                                                {% for consommateur in consommateurs %}
+                                                                                                    {% if consommateur.marchandise.id == marchandise.id  %}
+                                                                                                        <li>{{ consommateur.typeConsommateur }} : {{ consommateur.libelle }} </li>
+                                                                                                        {% endif %}
+                                                                                                    {% endfor %}
+
+                                                                                            </ul>
+                                                                                        </li>    
+                                                                                    </ul>
                                                                                 {% endif %}
                                                                             {% endfor %}
-                                                                        {% endif %}    
-                                                                    </ul>
+                                                                        {% endif %} 
+
+                                                                    </ul>     
+                                                                    <ul>
+                                                                        <li>Opérateur
+                                                                            <ul>
+                                                                                {% for operatSousCateg in operatSousCategs %}
+                                                                                    {% if operatSousCateg.sousCategEntite.id == sousCategorieEntite.id  %}
+                                                                                        <li>{{ operatSousCateg.operateur.typeOperateur }} : {{ operatSousCateg.operateur.libelle }} </li>
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+                                                                            </ul>
+                                                                        </li>    
+                                                                    </ul>     
                                                                 </li>
                                                             {% endif %}
                                                         {% endfor %}
@@ -58,7 +82,7 @@
                                 </ul>
                             </li>
                             <li>Service
-                                 <ul>
+                                <ul>
                                     {% for categorieEntite in categorieEntites %}
                                         {% if categorieEntite.typeCat == 'Service' %}
                                             <li> {{ categorieEntite.nomEntite }}<span>&nbsp;&nbsp;</span>
@@ -104,39 +128,11 @@
                                     {% endfor %}
                                 </ul>
                             </li>
-                            <li>Opérateur</li>
 
                         </ul>
                     </li>
                 </ul>
-                {#  <li><a href="#">CIS</a>
-                      <ul>
-                          {% for categorieEntite in categorieEntites %}
-                              <li> {{ categorieEntite.nomEntite }} <a title="Allez vers produit ou service" style="text-decoration: none; color: #003eff" href="{{ path('categorieentite_new') }}"><span class="fa fa-plus-circle" aria-hidden="true"></span> </a>
-                                  <ul>
-                                      {% if sousCategorieEntites %}
-                                          {% for sousCategorieEntite in sousCategorieEntites %}
-                                              {% if sousCategorieEntite.sousCategorieEntite.id == categorieEntite.id %}
-                                                  <li>{{ sousCategorieEntite.nomEntite }} <a title="Allez vers les sous produit ou service" style="text-decoration: none; color: #003eff" href="{{ path('categorieentite_new') }}"><span class="fa fa-plus-circle" aria-hidden="true"></span> </a>
-                                                      <ul>
-                                                          {% if marchandises %}
-                                                              {% for marchandise in marchandises %}
-                                                                  {% if marchandise.sousCategorieEntite.id == sousCategorieEntite.id %}
-                                                                      <li>{{ marchandise.libelle }} <a title="Allez vers les marchandises" style="text-decoration: none; color: #003eff" href="{{ path('categorieentite_new') }}"><span class="fa fa-plus-circle" aria-hidden="true"></span> </a></li> 
-                                                                      {% endif %}
-                                                                  {% endfor %}
-                                                              {% endif %}    
-                                                      </ul>
-                                                  </li>
-                                              {% endif %}
-                                          {% endfor %}
-                                      {% endif %}
-                                  </ul>
-                              </li>
-                          {% endfor %} 
-                      </ul>
-                  </li>
-              </ul>#}
+
             </div>
 
         </div>

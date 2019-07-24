@@ -1,0 +1,37 @@
+consommateur_index:
+    path:     /index/{page}
+    defaults: 
+        _controller: DciBundle:Consommateur:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+    
+consommateur_conso_lier_a_un_archandise:
+    path:     /consommateurs-lier-a-un-marchandise/{id}/{page}
+    defaults: 
+        _controller: DciBundle:Consommateur:consommateurLierAunMarchandise
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+consommateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:Consommateur:show" }
+    methods:  GET
+
+consommateur_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:Consommateur:new" }
+    methods:  [GET, POST]
+
+consommateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:Consommateur:edit" }
+    methods:  [GET, POST]
+
+consommateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:Consommateur:delete" }
+    methods:  DELETE

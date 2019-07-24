@@ -2,6 +2,15 @@ relevermarchandise_index:
     path:     /
     defaults: { _controller: "DciBundle:ReleverMarchandise:index" }
     methods:  GET
+    
+relevermarchandise_releversdunmarchandise:
+    path:     /releversdunmarchandise/{id}/{page}
+    defaults: 
+        _controller: DciBundle:ReleverMarchandise:voirReleversDunMarchandise
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
 
 relevermarchandise_show:
     path:     /{id}/show

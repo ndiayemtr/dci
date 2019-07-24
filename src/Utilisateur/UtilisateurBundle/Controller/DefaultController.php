@@ -17,7 +17,7 @@ class DefaultController extends Controller{
 
         }elseif ($this->get('security.authorization_checker')->isGranted('ROLE_COLLECTEUR_DEPART')) {
 
-             return $this->redirectToRoute('utilisateur_collecteur');            
+             return $this->redirectToRoute('indicamarcha_collecteur');            
 
         }elseif ($this->get('security.authorization_checker')->isGranted('ROLE_COLLECTEUR_REGION')) {
 
@@ -33,7 +33,7 @@ class DefaultController extends Controller{
         }
         elseif ($this->get('security.authorization_checker')->isGranted('ROLE_DECIDEUR_NATION')) {
 
-             return $this->redirectToRoute('utilisateur_decideur');
+             return $this->redirectToRoute('indicamarcha_index');
         }
         elseif ($this->get('security.authorization_checker')->isGranted('ROLE_GESTIONNAIRE')) {
 

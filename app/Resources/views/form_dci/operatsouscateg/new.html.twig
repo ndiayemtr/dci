@@ -1,0 +1,82 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+      <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('operatsouscateg_index') }}"><span class="fa fa-arrow-circle-left"></span>  Association entre les operateurs et les produits  </a>
+            | Affecter un operateur aux produits
+        </p>
+    </div>
+    <div class="col-md-offset-3 col-md-7">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Affecter un operateur aux produits </h3>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                <div class="row">
+                    <div >   
+                        {#<h4 style="color: #0000F0">Ajouter une nouvelle entité</h4>#}
+                        <div class="form-group">
+                            <div class="col-md-3">{{ form_label(form.operateur, "Operateur") }}</div>
+                            <div class="col-md-6">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.operateur) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.operateur, {'attr': {'class': 'form-control', 'placeholder':'UY/654'}}) }}
+                            </div>          
+                        </div><br><br><br>
+                        
+                        <div class="form-group">
+                            <div class="col-md-3">{{ form_label(form.sousCategEntite, "Produit") }}</div>
+                            <div class="col-md-6">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.sousCategEntite) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.sousCategEntite, {'attr': {'class': 'form-control', 'placeholder':'sousCategEntite'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-3">{{ form_label(form.quantiteDispo, "Quantite Dispo") }}</div>
+                            <div class="col-md-6">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.quantiteDispo) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.quantiteDispo, {'attr': {'class': 'form-control', 'placeholder':'quantiteDispo'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-3">{{ form_label(form.dateLanceProduit) }}</div>
+                            <div class="col-md-6">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.dateLanceProduit) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.dateLanceProduit, {'attr': {'class': 'form-control periodicite', 'placeholder':'clic pour choisir une date'}}) }}
+                            </div>
+                        </div><br><br>
+                        <div class="form-group">
+                            <div class="col-md-3"> {{ form_label(form.dateExpireProduit, "Date expiration") }}</div>
+                            <div class="col-md-6">
+                                {# Affichage des erreurs pour ce champ précis. #}
+                                {{ form_errors(form.dateExpireProduit) }}
+                                {# Génération de l'input. #}
+                                {{ form_widget(form.dateExpireProduit, {'attr': {'class': 'periodicite', 'placeholder':'clic pour choisir une date'}}) }}
+                            </div>
+                        </div><br><br>
+                        
+
+                    </div>
+                </div>
+                <br><br>
+                <input type="submit" value="Enregistrer" class="btn btn-primary btn-group-justified" />
+                {{ form_end(form) }}
+                <br>
+
+                <a style="text-decoration: none;" href="{{  path('operatsouscateg_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+                
+            </div>
+
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

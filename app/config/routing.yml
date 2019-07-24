@@ -1,24 +1,7 @@
 utilisateur:
     resource: "@UtilisateurBundle/Resources/config/routing.yml"
     prefix:   /
-    
-#les route pour les collecteurs
-#utilisateur_collecteur:
-#    resource: "@UtilisateurBundle/Resources/config/collecteur_routing.yml"
-#    prefix:   /
 
-#les route pour les decideurs
-#utilisateur_decideur:
-#    resource: "@UtilisateurBundle/Resources/config/decideur_routing.yml"
-#    prefix:   /
-
-#user:
-#    resource: "@UserBundle/Resources/config/routing.yml"
-#    prefix:   /
-#
-#dci:
-#    resource: "@DciBundle/Resources/config/routing.yml"
-#    prefix:   /
     
 #Les routes pour CRUD Indicateur
 dci_indicateur:
@@ -75,6 +58,22 @@ dci_relevermarchandise:
 dci_releversousprodser:
     resource: "@DciBundle/Resources/config/routing/releversousprodser.yml"
     prefix:   /releversousprodser
+
+#Les routes pour CRUD les Oprateurs
+dci_operateur:
+    resource: "@DciBundle/Resources/config/routing/operateur.yml"
+    prefix:   /operateur
+
+#Les routes pour CRUD les Consommateurs   
+dci_consommateur:
+    resource: "@DciBundle/Resources/config/routing/consommateur.yml"
+    prefix:   /consommateur
+ 
+    #Les routes pour CRUD les Operateur Sous categories
+dci_operatsouscateg:
+    resource: "@DciBundle/Resources/config/routing/operatsouscateg.yml"
+    prefix:   /operatsouscateg
+
     
 
 

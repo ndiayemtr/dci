@@ -31,33 +31,22 @@
                         <td>{{ indicaMarcha.indicateur.libelle }}</td>
                         <td>{{ indicaMarcha.indicateur.dateIndi }}</td>
                         <td>
-
                             <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_show', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
-                            {% if app.user is defined and app.user is not null%}
-                                {% if is_granted('ROLE_ADMIN') %}
-                                    <span>&nbsp;&nbsp;</span> 
-                                    <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_edit', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
-                                    <span>&nbsp;&nbsp;</span> 
-                                    <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_new', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
-                                {% endif %}
-                            {% endif %}
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_edit', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
+                            <span>&nbsp;&nbsp;</span> 
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_new', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-                <P>
-                    {% if app.user is defined and app.user is not null%}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur à une marchandise de produit ou service</a>
-                            
-                        {% endif %}
-                    {% endif %}
-                    <span>&nbsp;&nbsp;</span>
-                            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_index') }}"><span class="glyphicon glyphicon-eye-open"></span> La liste des relevées à une marchandise</a>
-
-                </P>
+             <P>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur à une marchandise de produit ou service</a>
+            <span>&nbsp;&nbsp;</span>
+            <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_index') }}"><span class="glyphicon glyphicon-eye-open"></span> La liste des relevées à une marchandise</a>
+        </P>
         
         <div style="text-align: center"> 
         <ul class="pagination">

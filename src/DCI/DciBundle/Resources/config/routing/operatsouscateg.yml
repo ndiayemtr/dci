@@ -1,0 +1,37 @@
+operatsouscateg_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:OperatSousCateg:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+    
+operatsouscateg_operat_lier_a_un_produit:
+    path:     /operat-lier-a-un-produit/{id}/{page}
+    defaults: 
+        _controller: DciBundle:OperatSousCateg:operatLierAUnProduit
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+operatsouscateg_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:OperatSousCateg:show" }
+    methods:  GET
+
+operatsouscateg_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:OperatSousCateg:new" }
+    methods:  [GET, POST]
+
+operatsouscateg_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:OperatSousCateg:edit" }
+    methods:  [GET, POST]
+
+operatsouscateg_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:OperatSousCateg:delete" }
+    methods:  DELETE

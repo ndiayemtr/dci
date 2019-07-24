@@ -55,24 +55,7 @@ class IndicateurRepository extends \Doctrine\ORM\EntityRepository{
             return new Paginator($qb, true);
     }
     
-        public function lesIndiCaDepart($page, $nbrAffichPage, $idDepartema){
         
-        $qb = $this->createQueryBuilder('indicat')
-                ->select('indicat')
-                ->leftJoin('indicat.departement', 'departement')
-                ->andWhere('departement.id =:id')
-                ->setParameter('id', $idDepartema)
-                ->orderBy('indicat.id', 'DESC')
-                ->getQuery();
-        
-        $qb
-           // On définit l'annonce à partir de laquelle commencer la liste
-           ->setFirstResult(($page-1) * $nbrAffichPage)
-           // Ainsi que le nombre d'annonce à afficher sur une page
-           ->setMaxResults($nbrAffichPage) ;
-            
-            return new Paginator($qb, true);
-    }
         
 }
 

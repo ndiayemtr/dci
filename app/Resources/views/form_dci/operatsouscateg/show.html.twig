@@ -1,0 +1,55 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+      <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('operatsouscateg_index') }}"><span class="fa fa-arrow-circle-left"></span>  Association entre les operateurs et les produits  </a>
+            | Afficher une association entre un operateur et produit
+        </p>
+    </div>
+   <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Affiche d'un operateur et produit</h3>
+        </div>
+
+   <table class="table">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <td>{{ operatSousCateg.id }}</td>
+            </tr>
+            <tr>
+                <th>Opérateur</th>
+                <td>{{ operatSousCateg.operateur.libelle }}</td>
+            </tr>
+            <tr>
+                <th>Produit</th>
+                <td>{{ operatSousCateg.sousCategEntite.nomEntite }}</td>
+            </tr>
+            <tr>
+                <th>Quantité Dispo</th>
+                <td>{{ operatSousCateg.quantiteDispo }}</td>
+            </tr>
+            <tr>
+                <th>Date Expire Produit</th>
+                <td>{{ operatSousCateg.dateExpireProduit }}</td>
+            </tr>
+        </tbody>
+    </table>
+                    </div>
+    <p>
+        {# <a style="text-decoration: none;" href="{{ path('relevermarchandise_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a>#} 
+        <a style="text-decoration: none; color: #003eff" href='javascript:self.history.back();'><span class="fa fa-arrow-circle-left"></span> Retour</a>   
+        &nbsp;&nbsp;&nbsp;
+         {% if app.user is defined and app.user is not null%}
+            {% if is_granted('ROLE_ADMIN') %}
+        <a style="text-decoration: none;" href="{{ path('operatsouscateg_edit', { 'id': operatSousCateg.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
+       
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete"  class="btn btn-danger">
+                {{ form_end(delete_form) }}
+            {% endif %}
+        {% endif %}
+
+    </p>
+{% endblock %}

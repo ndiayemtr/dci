@@ -63,12 +63,17 @@
     </div>
 
     <p>
-        <a style="text-decoration: none;" href="{{ path('indicamarcha_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        <a style="text-decoration: none;" href='javascript:self.history.back();' class="fa fa-arrow-circle-left"> Retour</a> &nbsp;&nbsp;&nbsp;
+         {% if app.user is defined and app.user is not null%}
+            {% if is_granted('ROLE_ADMIN') %}
         <a style="text-decoration: none;" href="{{ path('indicamarcha_edit', { 'id': indicaMarcha.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>
         <span>&nbsp;&nbsp;</span> 
         <a style="text-decoration: none; color: #003eff" href="{{ path('relevermarchandise_new', { 'id': indicaMarcha.id }) }}"><span class="glyphicon glyphicon-list"></span> Faire un relevé</a>
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Delete"  class="btn btn-danger">
-        {{ form_end(delete_form) }}
+        
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete"  class="btn btn-danger">
+                {{ form_end(delete_form) }}
+            {% endif %}
+        {% endif %}
     </p>
 {% endblock %}

@@ -1,7 +1,7 @@
 utilisateur_collecteur:
-    path:     /index/{page}
+    path:     /index-collecteur/{page}
     defaults: 
-        _controller: UtilisateurBundle:Collecteur:voirlesIndiCaDepart
+        _controller: UtilisateurBundle:Collecteur:voirIndicateursAffecterMarchaD1Depart
         page:        1 
     requirements:
         page: \d*

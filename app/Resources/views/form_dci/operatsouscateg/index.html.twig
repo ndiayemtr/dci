@@ -1,0 +1,63 @@
+{% extends "::layout/layout.html.twig" %}
+
+{% block body %}
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('operatsouscateg_index') }}"><span class="fa fa-arrow-circle-left"></span>  Association entre les operateurs et les produits  </a>
+        </p>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Liste des Operateurs et Produit</h3>
+        </div>
+
+        <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Opérateur</th>
+                <th>Produit</th>
+                <th>Quantité Dispo</th>
+                <th>Date Expire Produit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for operatSousCateg in operatSousCategs %}
+                <tr>
+                    <td>{{ operatSousCateg.id }}</td>
+                    <td>{{ operatSousCateg.operateur.libelle }}</td>
+                    <td>{{ operatSousCateg.sousCategEntite.nomEntite}}</td>
+                    <td>{{ operatSousCateg.quantiteDispo }}</td>
+                    <td>{{ operatSousCateg.dateExpireProduit }}</td>
+                    <td>
+                        <a style="text-decoration: none; color: #003eff" href="{{ path('operatsouscateg_show', { 'id': operatSousCateg.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Afficher</a>
+                        <span>&nbsp;&nbsp;</span> 
+                        <a style="text-decoration: none; color: #003eff" href="{{ path('operatsouscateg_operat_lier_a_un_produit', { 'id': operatSousCateg.sousCategEntite.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> Les opérateurs liés à ce produit</a>
+                        <span>&nbsp;&nbsp;</span> 
+
+                        {% if app.user is defined and app.user is not null%}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a style="text-decoration: none; color: #003eff" href="{{ path('operatsouscateg_edit', { 'id': operatSousCateg.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>                            
+                            {% endif %}
+                        {% endif %}      
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<P>
+    <a style="text-decoration: none; color: #003eff" href="{{ path('operatsouscateg_new') }}"><span class="glyphicon glyphicon-plus"></span> Associer un operateur aux produits</a>
+
+</P>       
+<div style="text-align: center"> 
+    <ul class="pagination">
+        {% for p in range(1, nbrTotalPages) %}
+            <li{% if p == page %} class="active"{% endif %}>
+                <a href="{{ path('operatsouscateg_index', {'page': p}) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

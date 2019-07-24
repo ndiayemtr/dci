@@ -1,0 +1,28 @@
+operateur_index:
+    path:     /{page}
+    defaults: 
+        _controller: DciBundle:Operateur:index
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
+operateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "DciBundle:Operateur:show" }
+    methods:  GET
+
+operateur_new:
+    path:     /new
+    defaults: { _controller: "DciBundle:Operateur:new" }
+    methods:  [GET, POST]
+
+operateur_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DciBundle:Operateur:edit" }
+    methods:  [GET, POST]
+
+operateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DciBundle:Operateur:delete" }
+    methods:  DELETE

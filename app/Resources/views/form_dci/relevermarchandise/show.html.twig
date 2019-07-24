@@ -30,7 +30,7 @@
                     <th class="titrePage">Marchandise</th>
                     <td></td>
                 </tr>
-                     <tr>
+                <tr>
                     <th>Reference</th>
                     <td>{{ releverMarchandise.indicaMarcha.marchandise.reference }}</td>
                 </tr>
@@ -55,11 +55,18 @@
 
     </div>
     <p>
-        <a style="text-decoration: none;" href="{{ path('relevermarchandise_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+        {# <a style="text-decoration: none;" href="{{ path('relevermarchandise_index') }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a>#} 
+        <a style="text-decoration: none; color: #003eff" href='javascript:self.history.back();'><span class="fa fa-arrow-circle-left"></span> Retour</a>   
+        &nbsp;&nbsp;&nbsp;
+         {% if app.user is defined and app.user is not null%}
+            {% if is_granted('ROLE_ADMIN') %}
         <a style="text-decoration: none;" href="{{ path('relevermarchandise_edit', { 'id': releverMarchandise.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
        
-        {{ form_start(delete_form) }}
-        <input type="submit" value="Delete"  class="btn btn-danger">
-        {{ form_end(delete_form) }}
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete"  class="btn btn-danger">
+                {{ form_end(delete_form) }}
+            {% endif %}
+        {% endif %}
+
     </p>
 {% endblock %}

@@ -123,4 +123,31 @@ class ReleverMarchandiseController extends Controller
             ->getForm()
         ;
     }
+    
+    public function voirReleversDunMarchandiseAction($id, $page){
+            if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+        //je fixe je nombre d'annoce par page
+        $nbrAttPage = 4;
+        
+        $em = $this->getDoctrine()->getManager();
+        $releverMarchandises = $em->getRepository('DciBundle:ReleverMarchandise')->releversDunMarchandise($page, $nbrAttPage, $id);      
+          // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($releverMarchandises) / $nbrAttPage);        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page " . $page . " n'existe pas.");
+           //return $this->render('PoliceBundle:Attestation:no_view.html.twig');                                        
+        }
+        
+        return $this->render('form_dci/indicamarcha/collecteur/relever_marchandise.html.twig', array(
+                    'releverMarchandises' => $releverMarchandises,
+                    'page' => $page,
+                    'id' => $id,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));       
+    }
 }

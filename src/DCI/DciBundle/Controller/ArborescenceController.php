@@ -24,10 +24,14 @@ class ArborescenceController extends Controller {
         $categorieEntites = $em->getRepository('DciBundle:CategorieEntite')->findAll();
         $sousCategorieEntites = $em->getRepository('DciBundle:SousCategorieEntite')->findAll();
         $marchandises = $em->getRepository('DciBundle:Marchandise')->findAll();
+        $operatSousCateg = $em->getRepository('DciBundle:OperatSousCateg')->findAll();
+        $consommateurs = $em->getRepository('DciBundle:Consommateur')->findAll();
         return $this->render('form_dci/arborescence/index.html.twig', array(
                     'categorieEntites' => $categorieEntites,
                     'sousCategorieEntites' => $sousCategorieEntites,
                     'marchandises' => $marchandises,
+                    'operatSousCategs' => $operatSousCateg,
+                    'consommateurs' => $consommateurs,
         ));
     }
     

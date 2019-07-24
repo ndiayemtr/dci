@@ -7,6 +7,24 @@ indicamarcha_index:
         page: \d+
     methods:  GET
     
+indicamarcha_collecteur:
+    path:     /index-collecteur/{page}
+    defaults: 
+        _controller: DciBundle:IndicaMarcha:voirIndicateursAffecterMarchaD1Depart
+        page:        1 
+    requirements:
+        page: \d*
+    methods:  GET
+    
+indicamarcha_decideur:
+    path:     /index-decideur/{page}
+    defaults: 
+        _controller: DciBundle:IndicaMarcha:voirIndicateursAffecterMarchaD1Depart
+        page:        1 
+    requirements:
+        page: \d*
+    methods:  GET
+    
 indicamarcha_indicatD1Marcha:
     path:     /indicat-dun-marcha/{id}/{page}
     defaults: 
