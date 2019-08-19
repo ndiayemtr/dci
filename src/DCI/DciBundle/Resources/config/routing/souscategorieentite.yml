@@ -6,6 +6,15 @@ souscategorieentite_index:
     requirements:
         page: \d+
     methods:  GET
+    
+souscategorieentite_lier:
+    path:     /sous_categ_lier_entite/{id}/{page}
+    defaults: 
+        _controller: DciBundle:SousCategorieEntite:sousCategorieLierEntite
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
 
 souscategorieentite_show:
     path:     /{id}/show

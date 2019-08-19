@@ -45,6 +45,33 @@ class SousCategorieEntiteController extends Controller
         ));
     }
 
+	public function sousCategorieLierEntiteAction($id, $page)
+    {
+              if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+        $nbrAttPage = 10;
+        $em = $this->getDoctrine()->getManager();
+
+        $sousCategorieEntites = $em->getRepository('DciBundle:SousCategorieEntite')->sousCategorieLierEntite($id, $page, $nbrAttPage);
+        $nbrTotalPages = ceil(count($sousCategorieEntites) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page" . $page . " n'existe pas.");
+        }
+
+        return $this->render('form_dci/souscategorieentite/index.html.twig', array(
+            'sousCategorieEntites' => $sousCategorieEntites,
+            'page' => $page,
+            'id' => $id,
+            'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
+
+
+
     /**
      * Creates a new sousCategorieEntite entity.
      *
@@ -52,11 +79,14 @@ class SousCategorieEntiteController extends Controller
     public function newAction(Request $request)
     {
         $sousCategorieEntite = new Souscategorieentite();
+		
         $form = $this->createForm('DCI\DciBundle\Form\SousCategorieEntiteType', $sousCategorieEntite);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+			$numero = $em->getRepository('DciBundle:SousCategorieEntite')->getNumeroDispo();
+			$sousCategorieEntite->setCode($numero);
             $em->persist($sousCategorieEntite);
             $em->flush();
 
@@ -76,6 +106,21 @@ class SousCategorieEntiteController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+			$numero = $em->getRepository('DciBundle:SousCategorieEntite')->getNumeroDispo();
+			$rest = substr($numero, 0, 1);
+        	if ($categorieEntite->getTypeCat() == 'Produit') {
+				$rest = substr($numero, 0, 1);
+				if ($rest== 'S') {
+					$numero = str_replace('S', 'P', $numero);
+					$sousCategorieEntite->setCode($numero);
+				} 
+			} else {
+				if ($rest== 'P') {
+					$numero = str_replace('P', 'S', $numero);
+					$sousCategorieEntite->setCode($numero);
+				} 
+			}
+			
             $sousCategorieEntite->setSousCategorieEntite($categorieEntite);
             $em->persist($sousCategorieEntite);
             $em->flush();
@@ -85,6 +130,7 @@ class SousCategorieEntiteController extends Controller
 
         return $this->render('form_dci/souscategorieentite/new.html.twig', array(
             'sousCategorieEntite' => $sousCategorieEntite,
+            'categorieEntite' => $categorieEntite,
             'form' => $form->createView(),
         ));
     }

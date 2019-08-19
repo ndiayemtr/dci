@@ -35,13 +35,12 @@ class MarchandiseRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }
     
-    public function marchandiseDunProduit($page, $nbrAffichPage, $idProduit) {
+    public function marchandiseDunProduit($page, $nbrAffichPage, $id) {
         $qb = $this->createQueryBuilder('march')
                 ->select('march')
-                ->leftJoin('march.entite', 'entite')
-                ->andWhere('entite.id =:id')
-                ->setParameter('id', $idProduit)
-                ->orderBy('march.id', 'DESC')
+                ->leftJoin('march.sousCategorieEntite', 'sousCategorieEntite')
+                ->andWhere('sousCategorieEntite.id =:id')
+                ->setParameter('id', $id)
                 ->getQuery();
         $qb
            // On définit l'annonce à partir de laquelle commencer la liste

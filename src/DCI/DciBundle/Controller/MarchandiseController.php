@@ -44,6 +44,35 @@ class MarchandiseController extends Controller {
                     'nbrTotalPages' => $nbrTotalPages,
         ));
     }
+	
+	public function marchandiseDunProduitAction($page, $id) {
+        
+             if ($page < 1) {
+            throw new NotFoundHttpException('Page "' . $page . '" inexistante.');
+        }
+        
+         //je fixe je nombre d'annoce par page
+        $nbrAttPage = 5;
+        $em = $this->getDoctrine()->getManager();
+
+        $marchandises = $em->getRepository('DciBundle:Marchandise')->marchandiseDunProduit($page, $nbrAttPage, $id);
+        
+         // On calcule le nombre total de pages grâce au count($attestations) qui retourne
+         //  le nombre total d'annonces
+        $nbrTotalPages = ceil(count($marchandises) / $nbrAttPage);
+        
+        // Si la page n'existe pas, on retourne une 404
+        if ($page > $nbrTotalPages) {
+            throw $this->createNotFoundException("La page" . $page . " n'existe pas.");
+        }
+
+        return $this->render('form_dci/marchandise/index.html.twig', array(
+                    'marchandises' => $marchandises,
+                    'page' => $page,
+                    'nbrTotalPages' => $nbrTotalPages,
+        ));
+    }
+	
 
     /**
      * Creates a new marchandise entity.

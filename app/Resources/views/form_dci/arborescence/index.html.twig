@@ -2,9 +2,9 @@
 
 {% block body %}
 
-    <div class="container" style="margin-top:30px;">
+<div class="arborescence">
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">
+            <div>
                 <ul id="tree1">
 
                     <li><a href="#">CIS</a>
@@ -37,14 +37,14 @@
                                                                             {% for marchandise in marchandises %}
                                                                                 {% if marchandise.sousCategorieEntite.id == sousCategorieEntite.id %}
                                                                                     <li>{{ marchandise.libelle }}<span>&nbsp;&nbsp;</span>
-                                                                                        <a title="Allez vers la marchandises" style="text-decoration: none; color: #003eff" href="{{ path('marchandise_show', { 'id': marchandise.id }) }}" target="_blank"><span class="fa fa-eye" aria-hidden="true"></span> </a>
+                                                                                        <a title="Fiche de la marchandise" style="text-decoration: none; color: #003eff" href="{{ path('marchandise_show', { 'id': marchandise.id }) }}" target="_blank"><span class="fa fa-eye" aria-hidden="true"></span> </a>
                                                                                         <span>&nbsp;&nbsp;</span>
-                                                                                        <a title="Affectez à un indicateur" style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_add', { 'id': marchandise.id }) }}" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> </a>
-                                                                                        <span>&nbsp;&nbsp;</span>
-                                                                                        <a title="Les indicateur liés a la marchandise" style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_indicatD1Marcha', { 'id': marchandise.id }) }}" target="_blank"><span class="fa fa-bars" aria-hidden="true"></span> </a>
+                                                                                        <a title="Ajouter un indicateur pour la marchandise" style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_add', { 'id': marchandise.id }) }}" target="_blank"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> </a>
+                                                                                       <span>&nbsp;&nbsp;</span>
+                                                                                        <a title="Liste des indicateurs de la marchandise" style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_indicatD1Marcha', { 'id': marchandise.id }) }}" target="_blank"><span class="fa fa-bars" aria-hidden="true"></span> </a>
                                                                                     </li> 
                                                                                     <ul>
-                                                                                        <li>Consommateur
+                                                                                        <li>Consommation
                                                                                             <ul>
                                                                                                 {% for consommateur in consommateurs %}
                                                                                                     {% if consommateur.marchandise.id == marchandise.id  %}

@@ -14,7 +14,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Code</th>
+                    <th>#</th>
                     <th>Produit ié</th>
                     <th>Sous produit</th>
                     <th></th>
@@ -25,7 +25,7 @@
 
                     <tr>
 
-                        <td>{{ sousCategorieEntite.code }}</td>
+                        <td>{{ sousCategorieEntite.id }}</td>
                         <td>{{ sousCategorieEntite.sousCategorieEntite.nomEntite }}</td>
                         <td>{{ sousCategorieEntite.nomEntite }}</td>
                         <td>
@@ -36,8 +36,6 @@
                                     <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_edit', { 'id': sousCategorieEntite.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
                                     <span>&nbsp;&nbsp;</span> 
                                     <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur a un sous produit ou service</a>
-                                    <span>&nbsp;&nbsp;</span> 
-                                    <a style="text-decoration: none; color: #003eff" href="{{ path('marchandise_lier', { 'id': sousCategorieEntite.id }) }}"><span class="glyphicon glyphicon-eye-open"></span> voir les marchandises liées</a>
                                     
                                 {% endif %}
                             {% endif %}
@@ -52,7 +50,7 @@
     <P>
         {% if app.user is defined and app.user is not null%}
             {% if is_granted('ROLE_ADMIN') %}
-                <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_addSousCateD1Produit', { 'id': id }) }}"><span class="glyphicon glyphicon-plus"></span> Nouveau sous produit ou service</a>
+                <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_new') }}"><span class="glyphicon glyphicon-plus"></span> Nouveau sous produit ou service</a>
                 <span>&nbsp;&nbsp;</span> 
                 <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_index') }}"><span class="glyphicon glyphicon-eye-open"></span> Vers la liste des Indicateurs de sous Categories</a>
             {% endif %}

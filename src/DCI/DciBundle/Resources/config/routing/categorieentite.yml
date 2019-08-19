@@ -1,5 +1,5 @@
 categorieentite_index:
-    path:     /{page}
+    path:     /index/{page}
     defaults: 
         _controller: DciBundle:CategorieEntite:index
         page: 1 

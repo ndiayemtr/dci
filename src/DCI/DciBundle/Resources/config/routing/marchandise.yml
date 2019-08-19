@@ -7,6 +7,15 @@ marchandise_index:
         page: \d+
     methods:  GET
 
+marchandise_lier:
+    path:     /marchandise_lier/{id}/{page}
+    defaults: 
+        _controller: DciBundle:Marchandise:marchandiseDunProduit
+        page: 1 
+    requirements:
+        page: \d+
+    methods:  GET
+
 marchandise_show:
     path:     /{id}/show
     defaults: { _controller: "DciBundle:Marchandise:show" }

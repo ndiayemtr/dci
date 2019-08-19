@@ -31,17 +31,42 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul id="menu" class="nav navbar-nav">
                         <li><a href="{{ path('arborescence_index') }}" class= 'btn1'>DCI</a></li>
+                          {% if app.user is defined and app.user is not null%}
+                            
+                                 {% if is_granted('ROLE_ADMIN') %}
+                                                              
                         <li><a href="{{ path('categorieentite_index') }}" class= 'btn1'>Categorie entité</a></li>
+                        {#<li><a href="{{ path('souscategorieentite_index') }}" class= 'btn1'>Sous categorie</a></li>#}
+                        <li><a href="{{ path('marchandise_index') }}" class= 'btn1'>Marchandise</a></li>
+                        <li><a href="{{ path('indicateur_index') }}" class= 'btn1'>Indicateur</a></li>
+                      
+                        <li><a href="{{ path('indicamarcha_index') }}" class= 'btn1'>Indicateur marchandise</a></li>
+                        <li><a href="{{ path('indicaprodser_index') }}" class= 'btn1'>Indicateur poroduit|service</a></li>
+                        <li><a href="{{ path('indicasousprodser_index') }}" class= 'btn1'>Indicateur sous produit|service</a></li>
+                       
+                        
+                        
+                                        {% elseif is_granted('ROLE_COLLECTEUR_DEPART')%}
+                        <li><a href="{{ path('indicamarcha_index') }}" class= 'btn1'>Indicateur marchandise</a></li>
+                        <li><a href="{{ path('indicaprodser_index') }}" class= 'btn1'>Indicateur poroduit|service</a></li>
+                        <li><a href="{{ path('indicasousprodser_index') }}" class= 'btn1'>Indicateur sous produit|service</a></li>
+                                        {% elseif is_granted('ROLE_DECIDEUR_NATION')%}
+                                        <b>ROLE_DECIDEUR_NATION</b>
+                                    {% endif %}
+                            {% endif %}
+                        
+                      <!--   <li><a href="{{ path('categorieentite_index') }}" class= 'btn1'>Categorie entité</a></li>
                         <li><a href="{{ path('souscategorieentite_index') }}" class= 'btn1'>Sous categorie</a></li>
                         <li><a href="{{ path('marchandise_index') }}" class= 'btn1'>Marchandise</a></li>
                         <li><a href="{{ path('indicateur_index') }}" class= 'btn1'>Indicateur</a></li>
                         <li><a href="{{ path('indicamarcha_index') }}" class= 'btn1'>Indicateur marchandise</a></li>
                         <li><a href="{{ path('indicaprodser_index') }}" class= 'btn1'>Indicateur poroduit|service</a></li>
-                        <li><a href="{{ path('indicasousprodser_index') }}" class= 'btn1'>Indicateur sous produit|service</a></li>
+                        <li><a href="{{ path('indicasousprodser_index') }}" class= 'btn1'>Indicateur sous produit|service</a></li> -->
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="./"> Recherche</a></li>
+                        
                         <li>
+
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                <a href="{{path('fos_user_security_logout') }}" class=""> Se déconnecter </a>
                               
@@ -55,13 +80,17 @@
         </nav>
         
         <img src="{{ absolute_url(asset('img/dci.PNG')) }}" width="100%" id="imgBarriere"> <br><br>
+           <div class="tabCat">
+          {#  {{ render(controller("DciBundle:Arborescence:index")) }}#}
+        </div>
         
         {% block body %}{% endblock %}
     
     {% block javascripts %}{% endblock %}
-   
+   <br> <br> <br><br> <br> 
     <footer  class="piedPage">
         <div class="container">
+            
             <div class="row">
                 <div class="col-md-4">
                     <h4>Informations</h4>
@@ -84,7 +113,7 @@
             </div>
         </div>
     </footer>
-</div>
+    </div>
     <script type="text/javascript"  src="{{ absolute_url(asset('js/vendors/jquery-3.1.1.min.js'))}}"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script type="text/javascript"  src="{{ absolute_url(asset('js/vendors/jquery.datetimepicker.full.js'))}}"></script>

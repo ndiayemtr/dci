@@ -1,89 +1,41 @@
 <!DOCTYPE html>
-
 <html>
     <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="{{ asset('css/vendors/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/vendors/font-awesome.min.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-        <title></title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">      
+        <meta name="author" content="">
+        <title>{% block title %}DCI!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/vendors/bootstrap.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/vendors/font-awesome.min.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/vendors/jquery.datetimepicker.min.css')) }}" />
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/style.css')) }}" />
+       {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/dci_logo.PNG') }}" />
     </head>
-    <body>
-        <header>
-            <div class="container">{#HbxLYdJkGD83j6B#}
-                <div class="row">
-                    <!--  Menu Hamberger-->
-                    <i class="iconMenu fa fa-bars fa-2x"></i>
-                    <!-- logo-->
-                    <div class="col-md-3 col-xs-12">
-                        <div class="logo"> <h2>DCI</h2></div>
-                    </div>
-                    <!--nav-->
-                    <nav class="col-md-9 col-xs-12">
-                        <ul class="nav-list">
-                            <li class="list"> <a href="">Accueil</a></li>
-                            <li class="list"> <a href="">Produit</a></li>
-                            <li class="list"> <a href="">Services</a></li>
-                            <li class="list"> <a href="">Profil</a></li>
-                            <li class="list"> <a href="">se connecter</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="logo-img">
-                    <img src="{{ absolute_url(asset('img/dci.PNG')) }}" width="100%" >
-                </div>
-            </div>
-        </header>
-        <!--   /header-->
-        <section class="sections home text-center">
-            <div class="overlay">
-                <div class="container">
-                    <div class="home-content">
-                        <h3 class="home-title">Start Bour Business Today</h3>
-                        <p class="home-desc">
-                            Start Bour Business TodayStart Bour Business TodayStart Bour Business TodayStart Bour Business Today
-                        </p>
-                        <button class="btn button">Sart Now</button>
-                        <button class="btn button">Discover more</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="sections about">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2 class="section-title">About Us</h2>
-                    <div class="line">
-                        <span></span>
+<body> 
+    <div class="container">      
+        <!-- Static navbar -->
+ 
+        
+        <img src="{{ absolute_url(asset('img/dci.PNG')) }}" width="100%" id="imgBarriere"> <br><br>
+           <div class="tabCat">
+          {#  {{ render(controller("DciBundle:Arborescence:index")) }}#}
+        </div>
+        
+        {% block body %}{% endblock %}
+    
+    {% block javascripts %}{% endblock %}
+   <br> <br> <br><br> <br> 
+    <footer  class="piedPage">
 
-                    </div>
-                    <p>
-                        Start Bour Business TodayStart Bour Business TodayStart 
-                    </p>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="about-info">
-                            <p>
-                                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-
-                            </p>
-                            <button class="about-info-btn">Learn More</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="about-img">
-                            <img src="img/road.PNG">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="test"></div>
-
-        <script src="{{ asset('js/vendors/jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ asset('js/vendors/bootstrap.js') }}"></script>
-        <script src="{{ asset('js/main.js') }}"></script>
+    </footer>
+    </div>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/vendors/jquery-3.1.1.min.js'))}}"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/vendors/jquery.datetimepicker.full.js'))}}"></script>
+    <script type="text/javascript"  src="{{ absolute_url(asset('js/main.js'))}}"></script>
+    
     </body>
-</html>
+    </html>

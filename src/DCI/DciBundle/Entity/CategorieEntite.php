@@ -34,6 +34,14 @@ class CategorieEntite
      * @ORM\Column(name="nomEntite", type="string", length=50)
      */
     private $nomEntite;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=50)
+     */
+    private $code;
+	
 
 
     /**
@@ -59,6 +67,20 @@ class CategorieEntite
 
         return $this;
     }
+    
+      /**
+     * Set nomEntite
+     *
+     * @param string $code
+     *
+     * @return CategorieEntite
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
 
     /**
      * Get nomEntite
@@ -68,6 +90,16 @@ class CategorieEntite
     public function getNomEntite()
     {
         return $this->nomEntite;
+    }
+	
+	  /**
+     * Get code
+     *
+     * @return string
+     */
+    public function getCode()
+    {
+        return $this->code;
     }
     
     /**

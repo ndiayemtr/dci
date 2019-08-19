@@ -23,7 +23,7 @@ class CategorieEntiteController extends Controller {
         }
         
          //je fixe je nombre d'annoce par page
-        $nbrAttPage = 5;
+        $nbrAttPage = 8;
         $em = $this->getDoctrine()->getManager();
 
         $categorieEntites = $em->getRepository('DciBundle:CategorieEntite')->allCategorieEntite($page, $nbrAttPage);
@@ -49,12 +49,26 @@ class CategorieEntiteController extends Controller {
      *
      */
     public function newAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
         $categorieEntite = new Categorieentite();
+		$numero = $em->getRepository('DciBundle:Categorieentite')->getNumeroDispo();
+		//var_dump($numero);die();
         $form = $this->createForm('DCI\DciBundle\Form\CategorieEntiteType', $categorieEntite);
         $form->handleRequest($request);
-
+		
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        	$rest = substr($numero, 0, 1);
+        	if ($categorieEntite->getTypeCat() == 'Produit') {
+				$rest = substr($numero, 0, 1);
+				if ($rest== 'S') {
+					$numero = str_replace('S', 'P', $numero);
+				} 
+			} else {
+				if ($rest== 'P') {
+					$numero = str_replace('P', 'S', $numero);
+				} 
+			}
+			$categorieEntite->setCode($numero);
             $em->persist($categorieEntite);
             $em->flush();
 

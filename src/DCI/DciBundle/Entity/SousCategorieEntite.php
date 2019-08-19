@@ -27,6 +27,13 @@ class SousCategorieEntite
      * @ORM\Column(name="nomEntite", type="string", length=50)
      */
     private $nomEntite;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="code", type="string", length=50)
+     */
+    private $code;
            
     /**
      * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\CategorieEntite")
@@ -50,7 +57,7 @@ class SousCategorieEntite
      *
      * @param string $nomEntite
      *
-     * @return CategorieEntite
+     * @return SousCategorieEntite
      */
     public function setNomEntite($nomEntite)
     {
@@ -58,6 +65,21 @@ class SousCategorieEntite
 
         return $this;
     }
+    
+    /**
+     * Set nomEntite
+     *
+     * @param string $code
+     *
+     * @return SousCategorieEntite
+     */
+    public function setCode($code)
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+    
 
     /**
      * Get nomEntite
@@ -79,29 +101,15 @@ class SousCategorieEntite
       
     }
 
-
-    /**
-     * Set typeCat
-     *
-     * @param string $typeCat
-     *
-     * @return CategorieEntite
-     */
-    public function setTypeCat($typeCat)
-    {
-        $this->typeCat = $typeCat;
-
-        return $this;
-    }
-
-    /**
-     * Get typeCat
+	
+	 /**
+     * Get code
      *
      * @return string
      */
-    public function getTypeCat()
+    public function getCode()
     {
-        return $this->typeCat;
+        return $this->code;
     }
 
     /**

@@ -24,5 +24,48 @@ class SousCategorieEntiteRepository extends \Doctrine\ORM\EntityRepository{
 
         return new Paginator($qb, true);
     }
+	
+	public function sousCategorieLierEntite($id, $page, $nbrAffichPage) {
+       $qb = $this->createQueryBuilder('SousCategorieEntite')
+                ->select('SousCategorieEntite')
+                ->leftJoin('SousCategorieEntite.sousCategorieEntite', 'categorieEntite')
+                ->andWhere('categorieEntite.id =:id')
+                ->setParameter('id', $id)
+                ->getQuery();
+        $qb
+                ->setFirstResult(($page - 1) * $nbrAffichPage)
+                ->setMaxResults($nbrAffichPage);
+
+        return new Paginator($qb, true);
+    }
+	
+	public function getNumeroDispo() {
+        //$date = new \DateTime;
+        //$debutNum = $date->format('Ym');
+        global $codeN;
+		$debutNum = 'SC';
+        $qb = $this->createQueryBuilder('SousCategorieEntite')
+                ->add('select', '(SousCategorieEntite.code)as num');
+        $qb->where($qb->expr()->like('SousCategorieEntite.code', ':numero'))
+                ->setParameter('numero', '%' . $debutNum . '%');
+                //->orderBy('categorieEntite.code', 'DESC');
+                //->setMaxResults(1);
+
+        $num = $qb->getQuery()
+                ->getResult();
+        if (count($num) >> 0) {
+        	 $code = $num[count($num) -1]['num'];
+			 //var_dump($code);die();
+			for ($i=8;$i<strlen($code);$i++) { 
+				$codeN .= $code{$i};
+			}
+			$codeIncrement = $codeN + 1;
+			$codeN1 = str_replace($codeN, $codeIncrement, $code);
+			//var_dump($codeN1);die();
+			return $codeN1;
+        } else {
+            return $debutNum . "01";
+        }
+    }
     
 }

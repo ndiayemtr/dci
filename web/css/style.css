@@ -11,9 +11,20 @@
 }
 
 .piedPage{
-    padding-bottom: 600px;
+/*    padding-bottom: 600px;
     background-color: #003eff;
-    margin-top: 200px;
+    margin-top: 200px;*/
+background-color: #242729;
+background-image: none;
+background-position: top left;
+    background-position-x: left;
+    background-position-y: top;
+background-repeat: no-repeat;
+border-top: 0;
+background-size: auto;
+color: #6a737c;
+padding-top: 0;
+padding-bottom: 0;
 }
 
 a{
@@ -137,4 +148,10 @@ a{
     outline: 0;
 }
 /*Fin arborescence*/
+
+.arborescence{
+    padding-left: 20px;
+}
+
+
 

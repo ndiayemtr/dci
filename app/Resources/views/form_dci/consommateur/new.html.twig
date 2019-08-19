@@ -1,16 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends "::layout/layout.html.twig" %}
 
 {% block body %}
-    <h1>Consommateur creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('consommateur_index') }}">Back to the list</a>
-        </li>
-    </ul>
+     <div class="row">
+        <p>
+            <a style="text-decoration: none;" href="{{  path('consommateur_index') }}"><span class="fa fa-arrow-circle-left"></span> Les consommateurs</a>
+            | Ajouter un consommateur
+        </p>
+    </div>
+    <div class="col-md-offset-4 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Modifier un consommateur</h3>
+            </div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input type="submit" value="Enregistrer" class="btn btn-primary btn-group-justified" />
+            {{ form_end(form) }}
+            <br>
+  
+            <a style="text-decoration: none; color: #003eff" href='javascript:self.history.back();'><span class="fa fa-arrow-circle-left"></span> Retour</a>   
+              <br> <br>
+            </div>
+         
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+     <br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
