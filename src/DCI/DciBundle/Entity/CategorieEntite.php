@@ -34,6 +34,13 @@ class CategorieEntite
      * @ORM\Column(name="nomEntite", type="string", length=50)
      */
     private $nomEntite;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
 	
 	/**
      * @var string
@@ -135,5 +142,29 @@ class CategorieEntite
     public function getTypeCat()
     {
         return $this->typeCat;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return CategorieEntite
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

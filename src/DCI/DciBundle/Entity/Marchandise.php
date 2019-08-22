@@ -65,13 +65,13 @@ class Marchandise
     
    
     /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\SousCategorieEntite", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\SousCategorieEntite")
      * @ORM\JoinColumn(nullable=false)
      */
     private $sousCategorieEntite;
     
     /**
-     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Departement", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="DCI\DciBundle\Entity\Departement")
      * @ORM\JoinColumn(nullable=false)
      */
     private $departement; 

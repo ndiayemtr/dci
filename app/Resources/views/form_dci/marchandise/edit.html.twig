@@ -3,7 +3,8 @@
 {% block body %}
       <div class="row">
         <p>
-            <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
+             <h2 class="titrePage">Administration des classifications des marchandises</h2>
+            <a style="text-decoration: none;" href="{{ path('marchandise_lier', { 'id': marchandise.sousCategorieEntite.id }) }}"><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
             | Modifier une marchandise
         </p>
     </div>
@@ -101,7 +102,7 @@
                 {{ form_end(edit_form) }}
                 <br>
 
-                <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+                <a style="text-decoration: none;" href="{{ path('marchandise_lier', { 'id': marchandise.sousCategorieEntite.id }) }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
                 <br><br>{{ form_start(delete_form) }}
                 <input type="submit" value="Delete"  class="btn btn-danger">
                 {{ form_end(delete_form) }}

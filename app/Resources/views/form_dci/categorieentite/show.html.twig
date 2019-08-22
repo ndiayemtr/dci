@@ -2,12 +2,13 @@
 
 {% block body %}
     <p>
+        <h2 class="titrePage">Administration des classifications : Produit | Service</h2>
         <a style="text-decoration: none;" href="{{  path('categorieentite_index') }}"><span class="fa fa-arrow-circle-left"></span> Produit-Service</a>
         | Afficher une categorie
     </p>
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Categorie d'entité</h3>
+            <h3 class="panel-title">Afficher une classe d'entité</h3>
         </div>
 
         <table class="table">
@@ -17,12 +18,16 @@
                     <td>{{ categorieEntite.code }}</td>
                 </tr>
                 <tr>
-                    <th class="colorSousTitre">Type categorie</th>
+                    <th class="colorSousTitre">Classe</th>
                     <td>{{ categorieEntite.typeCat }}</td>
                 </tr>
                 <tr>
-                    <th>Nom entite</th>
+                    <th>Libelle</th>
                     <td>{{ categorieEntite.nomEntite }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ categorieEntite.description }}</td>
                 </tr>
             </tbody>
         </table>

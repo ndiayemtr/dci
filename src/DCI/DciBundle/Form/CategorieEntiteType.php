@@ -15,7 +15,7 @@ class CategorieEntiteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomEntite')->add('typeCat',  ChoiceType::class, [
+        $builder->add('nomEntite')->add('description')->add('typeCat',  ChoiceType::class, [
         'choices'  => [
         'Produit' => 'Produit',
         'Service' => 'Service',

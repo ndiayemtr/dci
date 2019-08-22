@@ -13,7 +13,7 @@ class AddMarchandiseType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('reference')->add('stade', ChoiceType::class, [
+        $builder->add('stade', ChoiceType::class, [
             'choices' => [
                 'Manufacturé' => 'Manufacturé',
                 'Intermédiaire' => 'Intermédiaire',

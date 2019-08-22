@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Produit ié</th>
+                    <th>Produit lié</th>
                     <th>Sous produit</th>
                     <th></th>
                 </tr>
@@ -35,7 +35,7 @@
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_edit', { 'id': sousCategorieEntite.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>
                                     <span>&nbsp;&nbsp;</span> 
-                                    <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur a un sous produit ou service</a>
+                                    <a style="text-decoration: none; color: #003eff" href="{{ path('indicasousprodser_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur</a>
                                     
                                 {% endif %}
                             {% endif %}

@@ -3,35 +3,52 @@
 {% block body %}
     <div class="row">
         <p>
+             <h2 class="titrePage">Administration des classifications des Sous Classe (SC) : Produit | Service</h2>
             <a style="text-decoration: none;" href="{{  path('souscategorieentite_index') }}"><span class="fa fa-arrow-circle-left"></span> Les produits lié aux sous categories </a>
-            | Afficher une entité d'une sous categorie
+            | Affichage d'une sous classe d'une classe
         </p>
     </div>
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Sous categorie entite</h3>
+            <h3 class="panel-title">Sous Classe d'entite</h3>
         </div>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Code</th>
-                <td>{{ sousCategorieEntite.sousCategorieEntite.code }}{{ sousCategorieEntite.code }}</td>
-            </tr>
-            <tr>
-                <th class="titrePage">{{ sousCategorieEntite.sousCategorieEntite.nomEntite }}</th>
+              <tr>
+                <th class="titrePage">Rappel</th>
                 <td></td>
             </tr>
             <tr>
-                <th>Nom entite</th>
+                <th>Code-Parent</th>
+                <td>{{ sousCategorieEntite.sousCategorieEntite.code }}</td>
+            </tr>
+            <tr>
+                <th>Classe-Parent</th>
+                <td>{{ sousCategorieEntite.sousCategorieEntite.nomEntite }}</td>
+            </tr>
+            <tr>
+                <th></th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ sousCategorieEntite.code }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
                 <td>{{ sousCategorieEntite.nomEntite }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ sousCategorieEntite.description }}</td>
             </tr>
         </tbody>
     </table>
 
  </div>
              <p>
-            <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_index')  }}" class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
+            <a style="text-decoration: none; color: #003eff" href='javascript:self.history.back();' class="fa fa-arrow-circle-left"> Retour vers la liste</a> &nbsp;&nbsp;&nbsp;
             <a style="text-decoration: none; color: #003eff" href="{{ path('souscategorieentite_edit', { 'id': sousCategorieEntite.id })  }}"> <span class="glyphicon glyphicon-pencil"></span> Modification</a>&nbsp;&nbsp;&nbsp;
             {{ form_start(delete_form) }}
             <input type="submit" value="Delete"  class="btn btn-danger">

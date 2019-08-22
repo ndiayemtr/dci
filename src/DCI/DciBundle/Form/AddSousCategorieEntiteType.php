@@ -13,7 +13,7 @@ class AddSousCategorieEntiteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomEntite');
+        $builder->add('nomEntite')->add('description');
     }
     
     /**

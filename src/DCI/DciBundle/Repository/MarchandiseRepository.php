@@ -51,4 +51,23 @@ class MarchandiseRepository extends \Doctrine\ORM\EntityRepository {
             return new Paginator($qb, true);
     }
     
+    public function getNumeroReference() {
+        $date = new \DateTime;
+        $debutNum = $date->format('Ym');
+        $qb = $this->createQueryBuilder('marchandise')
+                ->add('select', '(marchandise.reference)as num');
+        $qb->where($qb->expr()->like('marchandise.reference', ':numero'))
+                ->setParameter('numero', '%' . $debutNum . '%')
+                ->orderBy('marchandise.reference', 'DESC')
+                ->setMaxResults(1);
+
+        $num = $qb->getQuery()
+                ->getResult();
+        if (count($num) >> 0) {
+            return $num[0]['num'] + 1;
+        } else {
+            return $debutNum . "01";
+        }
+    }
+    
 }

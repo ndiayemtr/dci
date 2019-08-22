@@ -69,6 +69,7 @@ class MarchandiseController extends Controller {
         return $this->render('form_dci/marchandise/index.html.twig', array(
                     'marchandises' => $marchandises,
                     'page' => $page,
+                    'id' => $id,
                     'nbrTotalPages' => $nbrTotalPages,
         ));
     }
@@ -98,17 +99,22 @@ class MarchandiseController extends Controller {
     }
 
     public function addMarchaD1SousCateAction(Request $request, SousCategorieEntite $sousCategorieEntite) {
+         $em = $this->getDoctrine()->getManager();
         $marchandise = new Marchandise();
+        $numero = $em->getRepository('DciBundle:Marchandise')->getNumeroReference();
+        
         $form = $this->createForm('DCI\DciBundle\Form\AddMarchandiseType', $marchandise);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+           
             $marchandise->setSousCategorieEntite($sousCategorieEntite);
+            $marchandise->setReference($numero);
             $em->persist($marchandise);
             $em->flush();
 
-            return $this->redirectToRoute('arborescence_index');
+            return $this->redirectToRoute('marchandise_show', array('id' => $marchandise->getId()));
         }
 
         return $this->render('form_dci/marchandise/add_marchandise.html.twig', array(
@@ -166,7 +172,7 @@ class MarchandiseController extends Controller {
             $em->flush();
         }
 
-        return $this->redirectToRoute('marchandise_index');
+        return $this->redirectToRoute('marchandise_lier', array('id' => $marchandise->getSousCategorieEntite()->getId()));
     }
 
     /**

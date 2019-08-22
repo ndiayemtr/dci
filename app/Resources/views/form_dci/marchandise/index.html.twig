@@ -3,7 +3,8 @@
 {% block body %}
      <div class="row">
         <p>
-            <a style="text-decoration: none;" href="{{  path('marchandise_index') }}"><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
+            <h2 class="titrePage">Administration des classifications des marchandises</h2>
+            <a style="text-decoration: none;" href=""><span class="fa fa-arrow-circle-left"></span> Toutes les Marchandises </a>
         </p>
     </div>
     <div class="panel panel-primary">
@@ -14,8 +15,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Reference</th>
+                    <th>Code</th>
                     <th>Stade</th>
                     <th>Libelle</th>
                     <th>Origine</th>
@@ -26,7 +26,7 @@
             <tbody>
                 {% for marchandise in marchandises %}
                     <tr>
-                        <td><a href="{{ path('marchandise_show', { 'id': marchandise.id }) }}">{{ marchandise.id }}</a></td>
+                        
                         <td>{{ marchandise.reference }}</td>
                         <td>{{ marchandise.stade }}</td>
                         <td>{{ marchandise.libelle }}</td>
@@ -37,7 +37,7 @@
                             <span>&nbsp;&nbsp;</span> 
                             <a style="text-decoration: none; color: #003eff" href="{{ path('marchandise_edit', { 'id': marchandise.id }) }}"><span class="glyphicon glyphicon-pencil"></span> Modification</a>                       
                             <span>&nbsp;&nbsp;</span> 
-                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur à une marchandise</a>
+                            <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_new') }}"><span class="glyphicon glyphicon-plus"></span> Affecter un indicateur</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -45,7 +45,7 @@
         </table>
     </div>
     <P>
-        <a style="text-decoration: none; color: #003eff" href="{{ path('marchandise_new') }}"><span class="glyphicon glyphicon-plus"></span> Nouvelle marchandise</a>
+        <a style="text-decoration: none; color: #003eff" href="{{ path('marchandise_add', { 'id': id }) }}"><span class="glyphicon glyphicon-plus"></span> Nouvelle marchandise</a>
         <span>&nbsp;&nbsp;</span> 
                 <a style="text-decoration: none; color: #003eff" href="{{ path('indicamarcha_index') }}"><span class="glyphicon glyphicon-eye-open"></span> Vers la liste des Indicateurs de marchandise</a>
     </P>

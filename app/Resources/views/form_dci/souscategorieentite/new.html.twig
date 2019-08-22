@@ -10,7 +10,7 @@
     <div class="col-md-offset-4 col-md-4">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h2 class="panel-title">{{categorieEntite.nomEntite }} : Creation d'une sous classe</h2>
+                <h2 class="panel-title"> Ajouter d'une SC dans : {{categorieEntite.nomEntite }} </h2>
             </div>
             <div class="panel-body">
                 {{ form_start(form) }}
@@ -19,7 +19,7 @@
             {{ form_end(form) }}
             <br>
   
-            <a style="text-decoration: none;" href="{{  path('souscategorieentite_index') }}"><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
+            <a style="text-decoration: none;" href='javascript:self.history.back();'><span class="fa fa-arrow-circle-left"></span> Retour ver la liste</a>
 
             </div>
          

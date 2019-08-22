@@ -13,7 +13,7 @@ class SousCategorieEntiteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomEntite')->add('sousCategorieEntite');
+        $builder->add('nomEntite')->add('description')->add('sousCategorieEntite');
     }
     
     /**

@@ -187,7 +187,7 @@ class SousCategorieEntiteController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('souscategorieentite_index');
+        return $this->redirectToRoute('souscategorieentite_lier', array('id' => $sousCategorieEntite->getSousCategorieEntite()->getId()));
     }
 
     /**
